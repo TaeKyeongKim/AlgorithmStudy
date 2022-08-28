@@ -1,6 +1,9 @@
 # AlgorithmStudy
 
-### 1.0 LeetCode [#9](https://leetcode.com/problems/palindrome-number/): Palindrome
+## LeetCode 의 [Top Interview Questions](https://leetcode.com/explore/interview/card/top-interview-questions-easy/) 에 기재되어 있는 Easy 문제들을 풀어보자. 
+
+### 문제 풀이 예시 
+### Ex) LeetCode [#9](https://leetcode.com/problems/palindrome-number/): Palindrome
 <details>
 <summary> 고민 과 해결</summary>
 - 어떻게 x 의 integer 값을 뒤집을까?
@@ -26,5 +29,15 @@
         → 1 * 10 + 2 = 12 
         
         → 12*10 + 1 = 121
+        
+</details>
+
+---- 
+## Array
+<details>
+<summary>1.0 Remove Duplicates from Sorted Array</summary>
+[문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/727/)
+### 고민 과 해결
+
         
 </details>
