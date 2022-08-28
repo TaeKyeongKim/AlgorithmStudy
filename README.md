@@ -36,8 +36,15 @@
 ## Array
 <details>
 <summary>1.0 Remove Duplicates from Sorted Array</summary>
-[문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/727/)
-### 고민 과 해결
 
+ [문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/727/)
+
+ ### 고민 과 해결
+ 
+ 
+ 
+ 
         
 </details>
+
+
