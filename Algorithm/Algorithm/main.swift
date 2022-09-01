@@ -9,3 +9,8 @@ import Foundation
 
 print("Hello, World!")
 
+let test = LeetNum9()
+var array = [0,0,1,1,1,2,2,3,3,4]
+print(removeDuplicates(&array))
+
+

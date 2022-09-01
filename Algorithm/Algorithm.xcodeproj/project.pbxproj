@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B72B5AF928BB91BF00D83260 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B5AF828BB91BF00D83260 /* main.swift */; };
 		B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B5AFF28BB920900D83260 /* leetNum9.swift */; };
+		B72B5B0228C06BA100D83260 /* Removeduplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B5B0128C06BA000D83260 /* Removeduplicates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 		B72B5AF528BB91BF00D83260 /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72B5AF828BB91BF00D83260 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B72B5AFF28BB920900D83260 /* leetNum9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leetNum9.swift; sourceTree = "<group>"; };
+		B72B5B0128C06BA000D83260 /* Removeduplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Removeduplicates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				B72B5AF828BB91BF00D83260 /* main.swift */,
 				B72B5AFF28BB920900D83260 /* leetNum9.swift */,
+				B72B5B0128C06BA000D83260 /* Removeduplicates.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */,
+				B72B5B0228C06BA100D83260 /* Removeduplicates.swift in Sources */,
 				B72B5AF928BB91BF00D83260 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
