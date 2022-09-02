@@ -10,10 +10,11 @@ import Foundation
 
 func removeDuplicates (_ nums: inout [Int]) -> Int {
   var pointer = 1
+  print("Given Array: \(nums)")
   for i in 1..<nums.count {
     if nums[i] != nums[i-1]{
       nums[pointer] =  nums[i]
-      print("\(i):\(nums)")
+      print("i = \(i), Array =  \(nums)")
       print("Pointer=\(pointer)")
       pointer += 1
     }

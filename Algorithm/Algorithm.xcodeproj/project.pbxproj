@@ -10,6 +10,7 @@
 		B72B5AF928BB91BF00D83260 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B5AF828BB91BF00D83260 /* main.swift */; };
 		B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B5AFF28BB920900D83260 /* leetNum9.swift */; };
 		B72B5B0228C06BA100D83260 /* Removeduplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72B5B0128C06BA000D83260 /* Removeduplicates.swift */; };
+		B75424A328C1C0CC0043921E /* MaxProfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424A228C1C0CC0043921E /* MaxProfit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		B72B5AF828BB91BF00D83260 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B72B5AFF28BB920900D83260 /* leetNum9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leetNum9.swift; sourceTree = "<group>"; };
 		B72B5B0128C06BA000D83260 /* Removeduplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Removeduplicates.swift; sourceTree = "<group>"; };
+		B75424A228C1C0CC0043921E /* MaxProfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxProfit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				B72B5AF828BB91BF00D83260 /* main.swift */,
 				B72B5AFF28BB920900D83260 /* leetNum9.swift */,
 				B72B5B0128C06BA000D83260 /* Removeduplicates.swift */,
+				B75424A228C1C0CC0043921E /* MaxProfit.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -126,6 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B75424A328C1C0CC0043921E /* MaxProfit.swift in Sources */,
 				B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */,
 				B72B5B0228C06BA100D83260 /* Removeduplicates.swift in Sources */,
 				B72B5AF928BB91BF00D83260 /* main.swift in Sources */,
