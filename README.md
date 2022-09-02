@@ -82,11 +82,46 @@ func removeDeplicates(_ nums: inout [Int]) -> Int {
 ```
 
 <img width="507" alt="image" src="https://user-images.githubusercontent.com/36659877/187836546-a099bf1a-06bf-43e0-81f2-704524dd5cf7.png">
-
- 
- 
- 
-        
 </details>
 
+---- 
+
+<details>
+<summary> 2.0 Best Time to Buy and Sell Stock II </summary>
+
+`고민`: Brute Force 방법 말고 어떻게 문제에 접근할수 있을까? 
+
+`근거`: Stock 을 산 날부터 팔아서 profit 을 낼수 있는 모든 경우의 수를 계산 해야하기 때문에 time complexity 가 On^n 이 된다. 
+
+### 시도 
+> `접근방식1`: 배열을 순회하면서 각 날짜마다 최대의 profit 을 더해준다. 
+
+> `결과`: 한 날짜의 최대 profit 을 주는 selling 날짜만 구하면 다른 날짜에 팔아서 생기는 profit 의 조합을 구할수 없게 된다. 밑에 그림을 보면 `valley(i)` 와 `peak(j)` 값만 계산해준것과 같다.  
+
+> `접근방식2`: Net Profit 구하기. 주어진 배열의 stock price 값들을 가지고 나올수 있는 profit 의 합을 구하는 방식이다. 
+
+<img width="685" alt="image" src="https://user-images.githubusercontent.com/36659877/188079868-3036dfc6-5ade-49a0-835f-3e9da37bbf43.png">
+
+> `결과`: 성공.
+
+```swift
+class Solution {
+    func maxProfit(_ prices: [Int]) -> Int {
+       var profit = 0 
+       for i in 1..<prices.count { 
+         if price[i] > price[i-1] { 
+           profit += price[i] - price[i-1]
+         }
+       } 
+       return profit
+    }
+}
+```
+
+Time Complexity =  `O(n)`
+
+Space Complexity = `O(1)`
+</details>
+
+----
 
