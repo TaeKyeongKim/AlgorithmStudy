@@ -84,7 +84,7 @@ func removeDeplicates(_ nums: inout [Int]) -> Int {
 <img width="507" alt="image" src="https://user-images.githubusercontent.com/36659877/187836546-a099bf1a-06bf-43e0-81f2-704524dd5cf7.png">
 </details>
 
----- 
+ 
 
 <details>
 <summary> 2.0 Best Time to Buy and Sell Stock II </summary>
@@ -123,5 +123,93 @@ Time Complexity =  `O(n)`
 Space Complexity = `O(1)`
 </details>
 
-----
+<details>
+<summary>3.0 Rotate Array </summary>
 
+[문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/)
+
+`고민`: 오른쪽으로 요소를 옮길때 어떻게 다음 값을 저장해서 그 다음 인덱스에 대입해줄수 있을까? 
+
+### 시도1
+> 접근 방식: Extra Memory 를 사용해서 해결하는 방법
+- 1.0 K 값의 range 는 0 <= k <= 10^5 이기 때문에 전체 배열의 크기와 나누어 떨어진 값을 구한다. (이 나머지 값은 오른쪽으로 shift 되어지는 횟수이다)
+
+- 2.0 기존배열에 N 만큼 shift 되면 어떤 패턴을 갖는지 확인해본다. 
+ex) Given : [1,2,3,4,5,6,7] , shift right by 3
+-> [5,6,7,1,2,3,4], 예제배열의 패턴을 살펴보았을때 배열을 [5,6,7] 과 [1,2,3,4] 로 나눌수 있다. 
+
+- 4.0 Nums 와 같은 크기를 가진 임시배열 `temp` 를 만들고 [5,6,7], [1,2,3,4] 를 차례대로 넣어줄수 있는 알고리즘을 생각해본다.
+-> 오른쪽으로 3번 shift 하라는 k 값을 사용해 기존 nums 배열에서 [5,6,7] 을 빼내어 temps 에 넣어준다. 
+
+- 5.0 나머지 [1,2,3,4] 의 값을 temp 에 넣어준뒤 nums 배열을 업데이트 시켜준다. 
+
+> 결과: 
+
+```swift
+
+func rotateArray(_ nums: inout [Int], _ k: Int) { 
+ //Shift 될 값을 계산 
+ var offSet = k % nums.count 
+ 
+ //nums 의 크기만큼 temp 배열생성 
+ var temp = Array(repeating: 0, count: nums.count)
+ 
+ //Temp 배열의 인덱스를 tracking 해줄 값
+ var index = 0
+ 
+ //nums 끝을 기준으로 offSet 값만큼 temp 에 넣어준다. 
+ for i in (nums.count - offset)..<nums.count {
+  temp[index] = nums[i] 
+  index += 1
+ }
+ 
+ //nums 의 시작을 기준으로 offSet 값만큼 temp 에 넣어준다. 
+ for j in 0..<(nums.count-offSet) { 
+  temp[index] = nums[j]
+  index += 1
+ }
+ 
+ //nums 업데이트
+ for k in 0..<nums.count { 
+  nums[k] = temp[k]
+ }
+ 
+}
+
+
+//번외 LeftShift 일 경우
+//Given [1,2,3,4,5,6,7], leftShift by 2 -> [3,4,5,6,7,1,2] 
+//배열을 [3,4,5,6,7] 과 [1,2] 로 나눌수 있다. 
+//temp 를 사용하여 [3,4,5,6,7], [1,2] 를 순서대로 대입할수 있게 로직을 구현한다. 
+
+func leftRotateArray(_ nums: inout [Int], _ k: Int) {
+ var offSet = k % nums.count 
+ var temp = Array(reapting:0, count: nums.count) 
+ var index = 0 
+ 
+ for i in offSet..<nums.count { 
+  temp[index] = nums[i]
+  index += 1
+ }
+ 
+ for j in 0..<offSet { 
+   temp[index] = nums[j]
+   index += 1
+ }
+ 
+ for k in 0..<nums.count { 
+  nums[k] = temp[k]
+ }
+ 
+}
+
+```
+> Left Shift 와 Right Shift 은 기준점은 시작점으로 할건지, 마지막 요소 로 할건지로 분리할수 있다. 
+
+Time Complexity = O(n) 
+
+Space Complexity = O(n)
+
+
+
+</details>
