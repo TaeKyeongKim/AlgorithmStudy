@@ -10,7 +10,9 @@ import Foundation
 print("Hello, World!")
 
 let test = LeetNum9()
-var array = [0,0,1,1,1,2,2,3,3,4]
-print(removeDuplicates(&array))
+var array = [1,2,3,4,5,6,7]
 
+//print(removeDuplicates(&array))
 
+rotate(&array, 1)
+print(array)
