@@ -132,7 +132,7 @@ Space Complexity = `O(1)`
 
 ### 시도1
 > 접근 방식: Extra Memory 를 사용해서 해결하는 방법
-- 1.0 K 값의 range 는 0 <= k <= 10^5 이기 때문에 전체 배열의 크기와 나누어 떨어진 값을 구한다. (이 나머지 값은 오른쪽으로 shift 되어지는 횟수이다)
+- 1.0 k 값의 range 는 0 <= k <= 10^5 이기 때문에 전체 배열의 크기와 나누어 떨어진 값을 구한다. (이 나머지 값은 오른쪽으로 shift 되어지는 횟수이다)
 
 - 2.0 기존배열에 N 만큼 shift 되면 어떤 패턴을 갖는지 확인해본다. 
 ex) Given : [1,2,3,4,5,6,7] , shift right by 3
@@ -204,12 +204,10 @@ func leftRotateArray(_ nums: inout [Int], _ k: Int) {
 }
 
 ```
-> Left Shift 와 Right Shift 은 기준점은 시작점으로 할건지, 마지막 요소 로 할건지로 분리할수 있다. 
+> Left Shift 와 Right Shift 은 기준점은 시작점으로 할건지, 마지막 요소 로 할건지로 구분할수 있다. 
 
 Time Complexity = O(n) 
 
 Space Complexity = O(n)
-
-
 
 </details>
