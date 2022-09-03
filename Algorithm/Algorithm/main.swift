@@ -14,5 +14,5 @@ var array = [1,2,3,4,5,6,7]
 
 //print(removeDuplicates(&array))
 
-rotate(&array, 1)
+rotate(&array, 3)
 print(array)
