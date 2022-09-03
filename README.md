@@ -210,4 +210,39 @@ Time Complexity = O(n)
 
 Space Complexity = O(n)
 
+### 시도2
+
+> 접근 방식: Element 를 하나씩 Shift 하는 방법
+ 
+- k 값의 range 는 0 <= k <= 10^5 이기 때문에 전체 배열의 크기와 나누어 떨어진 값을 구한다. (이 나머지 값은 오른쪽으로 shift 되어지는 횟수이다)
+- Left Shift 인경우 현재 배열의 첫번째 요소를 저장해놓았다가 요소를 하나씩 왼쪽으로 옮긴후에 마지막 요소에 저장한 첫번째 값을 넣어주면된다. 이것을 k 번 반복하면되는데
+ 문제는 Right Shift 라는것이다. 
+- `i + 1` 요소를 `i` 번째 인덱스에 넣는건 가능하지만 그 반대는 불가능하다. (i + 1 에 i 번째 요소가 중복해서 할당됨)  
+- 따라서 nums 을 `reversed()` 시켜서 문제를 풀었다. 
+
+> 결과: 
+```swift 
+func rotate(_ nums: inout [Int], _ k: Int) {
+   var offSet = k % nums.count
+ 
+   //Nums 배열을 뒤집어 준다. 
+   nums = nums.reversed()
+ 
+   while offSet > 0 { 
+      let temp = nums.first! 
+      for i in 0..<nums.count {
+        nums[i] = nums[i+1]
+        nums[nums.count-1] = temp
+        offSet -= 1
+      }
+   {
+                              
+   //Nums 배열의 순서 원상복구
+   nums = nums.reversed() 
+} 
+ 
+```
+time Complexity = On*k
+                              
+space Complexity = O(1)
 </details>
