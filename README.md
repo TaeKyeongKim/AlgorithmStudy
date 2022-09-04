@@ -261,18 +261,28 @@ d = (j + (nums.count - k)) % nums.count
 nums = [1,2,3,4,5,6], k = 2
 gcd = 2
 
-1st pass
+@1st pass
+ 
 temp = 1
+ 
 j = 0 d = 4 [5,2,3,4,5,6]
+ 
 j = 4 d = 2 [5,2,3,4,3,6]
+ 
 j = 2 d = 0 [5,2,1,4,3,6] 
+ 
 end 
 
-2nd pass
+@2nd pass
+ 
 temp = 2
+ 
 j = 1 d = 5 [5,6,1,4,3,6]
+ 
 j = 5 d = 3 [5,6,1,4,3,4]
+ 
 j = 3 d = 1 [5,6,1,2,3,4] 
+ 
 end 
 
 </details>
