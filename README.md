@@ -245,4 +245,37 @@ func rotate(_ nums: inout [Int], _ k: Int) {
 time Complexity = On*k
                               
 space Complexity = O(1)
+
+### 시도3
+
+> 접근 방식: Juggling Alogrithm 을 사용. 
+
+- 시도2 은 outer loop (k 번 실행되는 loop) 과 inner loop (각 요소마다 shift 하기위해 실해되는 loop) 때문에 `On*k` 의 시간복잡도를 가지게 됐다. 
+- Juggling Alogrithm 은 배열의 길이 n, shift 되는 횟수 k 의 GCD (최대공약수) 를 구하여 outer loop 을 만든다. 
+- Inner loop 에는 k 의 값만큼 떨어진 인덱스에 할당된 알맞은 배열의 요소을 할당시킨다. 
+
+ex1) k 값이 배열길이의 약수 일경우 
+
+d = (j + (nums.count - k)) % nums.count
+
+nums = [1,2,3,4,5,6], k = 2
+gcd = 2
+
+1st pass
+temp = 1
+j = 0 d = 4 [5,2,3,4,5,6]
+j = 4 d = 2 [5,2,3,4,3,6]
+j = 2 d = 0 [5,2,1,4,3,6] 
+end 
+
+2nd pass
+temp = 2
+j = 1 d = 5 [5,6,1,4,3,6]
+j = 5 d = 3 [5,6,1,4,3,4]
+j = 3 d = 1 [5,6,1,2,3,4] 
+end 
+
 </details>
+
+
+
