@@ -319,10 +319,13 @@ Space Complexity = O(1)
 </details>
 
  <details>
+  
  <summary> 4.0 Contains Duplicate </summary>
+  
+  
  `고민` = 시간 복잡도와 공간복잡도를 효율적으로 사용해서 문제를 풀어 봐야겠다. 
   
-  ###시도 
+  ### 시도 
   
   > 접근 방식
   
