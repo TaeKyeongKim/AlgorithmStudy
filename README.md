@@ -317,5 +317,29 @@ Time Complexity = O(N)
 Space Complexity = O(1) 
                               
 </details>
- 
 
+ <details>
+ <summary> 4.0 Contains Duplicate </summary>
+ `고민` = 시간 복잡도와 공간복잡도를 효율적으로 사용해서 문제를 풀어 봐야겠다. 
+  
+  ###시도 
+  
+  > 접근 방식
+  
+  - 2중 for loop = 시간복잡도 On^2 (너무 김)
+  
+  - 디셔너리 = 시간복잡도 O(N), 이지만 Memory 를 많이 잡아먹음 
+  
+  - Set =  시간복잡도 O(N),  디셔너리 보다 적게 memory 사용. 
+  
+  > 결과 
+  ```swift
+  var set = Set<Int>()
+  for num in nums {
+    if set.contains(num) {return true}
+    set.insert(num)
+  }
+  return false
+  ```
+  
+ </details>
