@@ -370,9 +370,11 @@ Space Complexity = O(1)
    return 0
    }
    ```
-  
+ 
  2.0 Using Set 
-  func singleNumber(_ nums:[Int]) -> Int {
+   
+ ```swift
+ func singleNumber(_ nums:[Int]) -> Int {
    var set = Set<Int>()
     for num in nums {
       if set.contains(num) {
@@ -383,5 +385,5 @@ Space Complexity = O(1)
     }
    return set.first!
   }
-   
+ ```  
   </details>
