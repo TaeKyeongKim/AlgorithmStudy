@@ -253,8 +253,6 @@ space Complexity = O(1)
 - 시도2 은 outer loop (k 번 실행되는 loop) 과 inner loop (각 요소마다 shift 하기위해 실해되는 loop) 때문에 `On*k` 의 시간복잡도를 가지게 됐다. 
 - Juggling Alogrithm 은 배열의 길이 n, shift 되는 횟수 k 의 GCD (최대공약수) 를 구하여 outer loop 을 만든다. 
 - Inner loop 에는 k 의 값만큼 떨어진 인덱스에 할당된 알맞은 배열의 요소을 할당시킨다. 
-
- 
  
 ```swift 
  
@@ -270,8 +268,12 @@ func rotateArray(_ nums: inout [Int], _ k: Int) {
  
  for i in 0..<gcd(nums.count, offSet) { 
    let temp = nums[i]
+   //j = index of array that is to be replaced
    var j = i 
    while true { 
+     //d = pointing the next element to be shifted
+     //nums.count - offSet is used for right shift, 
+     //(j-offSet) % offSet can be used for left shift
      let d = (j+(nums.count-offSet)) % nums.count
      if d == j {break}
      nums[j] = nums[d]
@@ -284,13 +286,13 @@ func rotateArray(_ nums: inout [Int], _ k: Int) {
  
 ex1) k 값이 배열길이의 약수 일경우 
 
-d = (j + (nums.count - k)) % nums.count
 
-nums = [1,2,3,4,5,6], k = 2
-gcd = 2
+nums = [1,2,3,4,5,6], k = 2              
+gcd = 2 (number of outer loop iteration)
 
 @1st pass
-temp = 1
+`temp = 1`
+ 
 |j|d|nums|
 |---|---|------|
 |0|4|[5,2,3,4,5,6]|
@@ -299,7 +301,8 @@ temp = 1
  
 
 @2nd pass
-temp = 2
+`temp = 2`
+ 
 |j|d|nums|
 |---|---|------|
 |1|5|[5,6,1,4,3,6]|
