@@ -346,3 +346,42 @@ Space Complexity = O(1)
   ```
   
  </details>
+  
+  
+  <details>
+   <summary> 5.0 singleNumber </summary> 
+   
+   > 접근방식 
+
+   1.0 Using Dictionary 
+   ```swift 
+   func singleNumber(_ nums:[Int]) -> Int {
+    var counter: [Int: Int] = [:]
+     for num in nums {
+       if let count = counter[num] {
+         counter.updateValue(count + 1, forKey: num)
+       }else {
+         counter.updateValue(1, forKey: num)
+       }
+     }
+     if let res = counter.first(where: {$0.value == 1}) {
+       return res.key
+     }
+   return 0
+   }
+   ```
+  
+ 2.0 Using Set 
+  func singleNumber(_ nums:[Int]) -> Int {
+   var set = Set<Int>()
+    for num in nums {
+      if set.contains(num) {
+        set.remove(num)
+      }else {
+        set.insert(num)
+      }
+    }
+   return set.first!
+  }
+   
+  </details>
