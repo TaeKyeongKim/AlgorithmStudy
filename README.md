@@ -312,7 +312,10 @@ gcd = 2 (number of outer loop iteration)
 |5|3|[5,6,1,4,3,4]|
 |3|1|[5,6,1,2,3,4]|
  
+Time Complexity = O(N) 
+                              
+Space Complexity = O(1) 
+                              
 </details>
  
- Time Complexity = O(N) 
- Space Complexity = O(1) 
+
