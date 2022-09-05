@@ -254,6 +254,9 @@ space Complexity = O(1)
 - Juggling Alogrithm 은 배열의 길이 n, shift 되는 횟수 k 의 GCD (최대공약수) 를 구하여 outer loop 을 만든다. 
 - Inner loop 에는 k 의 값만큼 떨어진 인덱스에 할당된 알맞은 배열의 요소을 할당시킨다. 
  
+ 
+> 결과 
+ 
 ```swift 
  
 func gcd(_ a: Int, _ b: Int) -> Int {
@@ -310,6 +313,6 @@ gcd = 2 (number of outer loop iteration)
 |3|1|[5,6,1,2,3,4]|
  
 </details>
-
-
-
+ 
+ Time Complexity = O(N) 
+ Space Complexity = O(1) 
