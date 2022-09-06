@@ -12,6 +12,7 @@ func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
   var res: [Int] = []
   var outter = nums1.count >= nums2.count ? nums2 : nums1
   var inner = nums1.count >= nums2.count ? nums1 : nums2
+
   var m = outter.count
   while m > 0 {
     let lastElement = outter.last!
@@ -23,21 +24,10 @@ func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
     m -= 1
   }
   
+  //MARK: Sort and Binary Search
+  //firstIndex 는 O(N) 의 time Complexity 를 가지고 있기 때문에 Sort 와 Binary Search 를 사용해 문제 접근
   
-//  var dict1: [Int:Int] = [:]
-//  var dict2: [Int:Int] = [:]
-//
-//  for (index, value) in nums1.enumerated() {
-//    dict1.updateValue(value, forKey: index)
-//  }
-//
-//  for (index, value) in nums2.enumerated() {
-//    dict2.updateValue(value, forKey: index)
-//  }
-//
-//  for (key,value) in dict1 {
-//    let interestedElement = dict2.filter({$0.value == value})
-//
-//  }
+  //MARK: Using Hash
+
   return res
 }
