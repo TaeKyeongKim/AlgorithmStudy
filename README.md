@@ -475,3 +475,12 @@ Time Complexity = `O(nlogn + mlogn)`
 
 Space Complexity = O(1)
 </details> 
+
+
+<detail> 
+ <summary> 7.0 Plus One </summary> 
+ [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/559/)
+ 
+
+</detail> 
+
