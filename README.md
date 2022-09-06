@@ -389,7 +389,7 @@ Space Complexity = O(1)
   </details>
   
 <details> 
-<summary> Intersection of Two Arrays II </summary> 
+<summary> 6.0 Intersection of Two Arrays II </summary> 
 
 ### 시도1
 
