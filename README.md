@@ -387,3 +387,91 @@ Space Complexity = O(1)
   }
  ```  
   </details>
+  
+<details> 
+<summary> Intersection of Two Arrays II </summary> 
+
+### 시도1
+
+> 접근방식 : Brute Force 
+
+- 두배열의 요소를 순서대로 하나씩 비교하여 같은 값을 `res` 배열에 더해주는 방식으로 문제를 해결 했다. 
+
+> 결과 
+
+```swift 
+func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+  var res: [Int] = [] 
+  var outter = nums1.count >= nums2.count ? nums2: nums1
+  var inner = nums1.count >= nums2.count ? nums1: nums2
+  var m = outter.count
+  while m > 0 {
+    let lastElement = outter.last!
+    if let matchedIndex = inner.firstIndex(where: {$0 == lastElement}) {
+      res.append(lastElement)
+      inner.remove(at: matchedIndex)
+    }
+    outter.removeLast()
+    m -= 1
+  } 
+  return res
+} 
+```
+
+Time Complexity = O(N*M)
+
+Space Complexity = O(1) (idealy) 
+ 
+ 
+ ### 시도2
+
+> 접근방식 : Binary Search  
+
+- 시도 1 에서 같은 요소를 찾는 방법으로 `firstIndex` 메소드를 사용했는데, binary search 를 사용해서 `O(nlogn + mlogn)` Time Complexity 를 개선 해보자.
+
+> 결과 
+
+```swift 
+
+func binarySearch(_ arr: [Int], _ value: Int, _ low: Int, _ high: Int) -> Int {
+  
+  if low > high {return -1}
+  
+  let mid = (low + high) / 2
+  if arr[mid] == value {
+    return mid
+  }
+  else if arr[mid] > value {
+    return binarySearch(arr, value, low, mid - 1)
+  }
+  else if arr[mid] < value {
+    return binarySearch(arr, value, mid + 1, high)
+  }
+  return -1
+}
+
+
+func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+  var res: [Int] = [] 
+  var outter = nums1.count >= nums2.count ? nums2: nums1
+  var inner = nums1.count >= nums2.count ? nums1: nums2
+  var m = outter.count
+  while m > 0 {
+    let lastElement = outter.last!
+    inner = inner.sorted(by: <)
+    let matchedIndex = binarySearch(inner, lastElement, 0, inner.count - 1)
+    if matchedIndex >= 0 {
+      res.append(lastElement)
+      inner.remove(at: matchedIndex)
+    }
+    outter.removeLast()
+    m -= 1
+  }
+  return res
+} 
+```
+
+Time Complexity = `O(nlogn + mlogn)`
+
+Space Complexity = O(1)
+</details> 
