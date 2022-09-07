@@ -556,3 +556,38 @@ Space Complexity = `O(n)`
   
  </details>
  
+  <details>
+   <summary> 9.0 Two Sum </summary>
+   
+   [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/546/)
+   
+   > 고민 
+   - 시간복잡도 `O(n^2)` 이하로 문제를 풀수 있을까? 
+   
+   ### 시도
+   > 접근 방법
+   - 딕셔너리를 사용해서 문제를 해결하려 한다. 
+   - nums 를 순회 하면서 `Target - nums[i]` 을 디셔너리의 Key 로, value 는 i 값으로 할당한다. 
+   - 디셔너리의 key 값에 nums[i] 의 요소가 있는지 확인한다. 이값을 x 라고 한다면, `Target - nums[i] = x`, `x + nums[i] = Target` 이 성사한다. 
+   - i 와 저장되어 있는 딕셔너리의 value 값을 리턴 한다. 
+   
+   ```swift
+   func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+    var dict: [Int:Int] = []
+    
+    for (index, value) in nums.enumerated() { 
+     guard let matchedRemainingIndex = dict[value] else {
+      dict.updateValue(index, forKey: target - value)
+      continue
+     }
+     return [index, matchedRemainingIndex]
+    }
+   }
+   ``` 
+   
+  Time Complexity = `O(n)`
+
+  Space Complexity = `O(n)`
+   
+  </details>
+  
