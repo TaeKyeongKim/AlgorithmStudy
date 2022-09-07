@@ -591,3 +591,11 @@ Space Complexity = `O(n)`
    
   </details>
   
+  <details> 
+   <summary> 10.0 Valid Sudoku </summary> 
+   [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/769/) 
+    
+   
+   
+   
+  </details>
