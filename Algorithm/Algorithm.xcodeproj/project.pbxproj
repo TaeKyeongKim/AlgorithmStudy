@@ -16,6 +16,7 @@
 		B75424A928C593DF0043921E /* singleNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424A828C593DF0043921E /* singleNumber.swift */; };
 		B75424AB28C59D9D0043921E /* intersect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424AA28C59D9D0043921E /* intersect.swift */; };
 		B75424AD28C72C900043921E /* plusOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424AC28C72C900043921E /* plusOne.swift */; };
+		B75424AF28C85A2F0043921E /* Movezeros.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424AE28C85A2F0043921E /* Movezeros.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 		B75424A828C593DF0043921E /* singleNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = singleNumber.swift; sourceTree = "<group>"; };
 		B75424AA28C59D9D0043921E /* intersect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = intersect.swift; sourceTree = "<group>"; };
 		B75424AC28C72C900043921E /* plusOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusOne.swift; sourceTree = "<group>"; };
+		B75424AE28C85A2F0043921E /* Movezeros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movezeros.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				B75424A828C593DF0043921E /* singleNumber.swift */,
 				B75424AA28C59D9D0043921E /* intersect.swift */,
 				B75424AC28C72C900043921E /* plusOne.swift */,
+				B75424AE28C85A2F0043921E /* Movezeros.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				B75424AD28C72C900043921E /* plusOne.swift in Sources */,
 				B75424A928C593DF0043921E /* singleNumber.swift in Sources */,
+				B75424AF28C85A2F0043921E /* Movezeros.swift in Sources */,
 				B75424A328C1C0CC0043921E /* MaxProfit.swift in Sources */,
 				B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */,
 				B75424AB28C59D9D0043921E /* intersect.swift in Sources */,
