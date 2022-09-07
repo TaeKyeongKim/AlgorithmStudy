@@ -479,8 +479,46 @@ Space Complexity = O(1)
 
 <details> 
  <summary> 7.0 Plus One </summary> 
+ 
  [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/559/)
  
+ `고민` = String 을 Integer 로 변환 해서 계산하면, Integer 의 limit을 넘을수가 있다. 따라서 배열 자체로 계산하는 방법을 고민해봤다.
 
+  > 접근방식 
+  
+  - 주어진 digits 배열의 끝부터 1 을 더한 값이 9 를 넘으면 carry 를 1, 아니면 carry 를 0 으로 설정해주어 다음 요소를 계산하는 방식으로 접근했다. 
+  
+  - 마지막 요소부터 시작해서 첫번째 요소에 도달했을때의 값과 carry 로 넘어온 값을 더해 10 이 된다면 결과값을 담은 `res` 배열에 [0,1] 을 할당했다. 
+  
+  - 끝으로 `res` 배열을 reverse 해서 반환. 
+  
+  > 결과 
+
+
+```swift
+func plusOne(_ digits: [Int]) -> [Int] {
+  var res: [Int] = []
+  var carry = 1
+  var index = digits.count - 1
+  while index > -1 {
+    let sum = digits[index] + carry
+    if index == 0 && sum > 9 {
+      res += [0,1]
+    }else if sum > 9 {
+      carry = 1
+      res.append(0)
+    }else {
+      carry = 0
+      res.append(sum)
+    }
+    index -= 1
+  }
+  return res.reversed()
+}
+```
+Time Complexity = `O(n)`
+
+Space Complexity = `O(n)`
+ 
 </details> 
 
