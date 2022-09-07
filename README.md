@@ -523,13 +523,36 @@ Space Complexity = `O(n)`
 </details> 
 
  <details> 
-  <summary> Move Zeroes </summary> 
+  <summary> 8.0 Move Zeroes </summary> 
   
   [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/567/)
   
+  > 고민 
+  - Extra Memory 를 사용하지 않고 Inplace 방식으로 알고리즘을 어떻게 구현 할까?
+  - O(N) 으로 구현 해보자 
   
+  ### 시도 
+  
+  > 접근 방식 
+  
+  - 배열은 순회 할때 필요한 `i` 와 0 의 위치를 가르켜줄 `pointerToZero`, Two Pointer 를 사용한다. 
+  - 배열을 순회 할때 `i` 번째 요소가 0 이 아닐시 다음 요소로 넘어 간다. 이로써 배열의 첫 0 을 i 번째 요소와 바꿀수 있게 된다. 
+  
+  > 결과 
+  
+  ```swift 
+  func moveZeroes(_ nums: inout [Int]) {
+   var pointerToZero = 0
+   for i in 0..<nums.count {
+     if nums[i] == 0 {continue}
+     nums.swapAt(i, pointerToZero)
+     pointerToZero += 1
+   }
+  }  
+  ```
+  Time Complexity = `O(n)`
 
-
+  Space Complexity = `O(1)`
   
  </details>
  
