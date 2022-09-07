@@ -18,4 +18,6 @@ var array2 = [1]
 //rotate(&array, 2)
 //print(containsDuplicates(array))
 //print(intersect(array, array2))
-print(moveZeroes(&array))
+//print(moveZeroes(&array))
+
+print(twoSum(array, 4))
