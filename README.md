@@ -593,9 +593,122 @@ Space Complexity = `O(n)`
   
   <details> 
    <summary> 10.0 Valid Sudoku </summary> 
+   
    [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/769/) 
     
+   > 고민 
    
+   - `문제요약` : 이문제는 valid 한 스도쿠인것을 확인하기 위해서 row, column, square(3x3) 안에 있는 요소들이 1~9 까지 겹치는지 확인하는 문제였다.
+   - 1.0 스도쿠 배열 순회 방법 
+   - 2.0 어떤 자료구조로 중복 확인을 해줄까? 
+   - 3.0 row, column, square 를 체크해야하는데 어떤 순서로 체크를 해줄까?
+   - 4.0 square 체크를 어떤식으로 해야하나? 
    
+   > 해결 
    
+   - 1.0 스도쿠 배열 순회 방법 
+    - 아래와 같이 스도쿠 배열이 주어지면 가장 쉽게 모든 배열의 요소를 순회할수 있는 가장 쉽고 직관적인 방법은 brute force 방법으로 진행하는것이였다. 
+    - row, column 의 요소를 지정하기 위해 i 번째 row 를 기준으로 row 에 있는 요소들을 j 로 지정했다.
+    
+ <img width="887" alt="image" src="https://user-images.githubusercontent.com/36659877/189093056-877dde48-83be-4842-98fd-21bea9f9fe31.png">
+   
+   - 2.0 어떤 자료구조로 중복 확인을 해줄까?
+     - swift 에는 array, set, dictionary 를 이용하여 중복된 요소가 있는지 확인하는 `contains` 메서드를 사용할수 있다. 
+     - 이중 최적의 time complexity 를 갖는 자료구조로 선택했다. 
+       - array: O(n) 
+       - set: O(1) 
+       - dictionary: O(1)
+     - `set` 과 `dictionary` 는 `hashing` 을 사용해 O(1) 의 시간복잡도로 중복된 요소를 찾을수 있었다. 이중 `dictionary` 는 `key`, `value` 값을
+     할당해주어야 하기 때문에 `set` 보다 메모리를 많이 사용하게 된다. 
+     - 따라서 `set` 으로 중복확인을 진행했다.
+     
+  - 3.0 row, column, square 를 체크해야하는데 어떤 순서로 체크를 해줄까?
+    - 생각해보니 row, column, square 를 체크하는 순서에 상관없이 중복요소가 있다면 false 를 반환해주면 된다.
+    
+  - 4.0 square 체크를 어떤식으로 해야하나? 
+     - 순회하는 방법으로 brute force 를 사용하기 때문에 squareSet 에 들어갈 요소들을 innerloop 에서 지정 해주어야한다. 
+     - 이때 innerloop 은 row 요소들을 순회하기 때문에 row 요소들을 3개 씩 나누어서 sqaureSet 에 할당해주는게 직관적이라 생각했다. 
+     - 할당해주려는 과정에서 겪은 문제는 row 의 요소를 순회할때 i 번째 있는 row 에 있는 모든 요소들을 sqaureSet 에 넣어주어야 했었다. 
+     
+       - 기존에 생각했던 중복확인 방법  
+     <img width="778" alt="image" src="https://user-images.githubusercontent.com/36659877/189089994-49088c2f-aa1b-4bd7-a0d9-90107f5aa1dc.png">
+     
+       -> 문제 : loop 에서 i번쨰 row 요소 전체를 순회 하기 때문에 squareSet 하나씩 검사하는것은 불가능.
+     
+     - row 에 있는 모든 요소들을 sqaureSet 에 집어 넣기 위해선 3개의 sqaureSet 이 필요했다. 
+     따라서 `var squareSet = Array(repeating: Set<Character>(), count: (board.count/3)) 와 같이 squareSet 을 초기화 해주었고 i번째 row 를 순회 할때 3개씩 요소를 끊어서 sqaureSet 에 할당해주었다. 
+     
+    <img width="1100" alt="image" src="https://user-images.githubusercontent.com/36659877/189092565-2fe9c6ff-1c55-4cd1-89e2-dba07c3ad0db.png">
+  
+  
+    > 결과 
+    
+    ```swift
+    func isValidSudoku(_ board: [[Character]]) -> Bool {
+  var itemCount = 0
+  var squareSet = Array(repeating: Set<Character>(), count: (board.count/3))
+  for i in 0..<board.count {
+    var rowCheckSet: Set<Character> = Set<Character>()
+    var colCheckSet: Set<Character> = Set<Character>()
+    
+    // Checking Squares, Rows, Column in sequence
+    for j in 0..<board[i].count {
+      let rowElement = board[i][j]
+      let colElement = board[j][i]
+      itemCount += 1
+      let index = j/3
+      
+      //Checking Squares
+      if checkDuplicate(val: rowElement, on: squareSet[index]) {
+        squareSet[index].insert(rowElement)
+      }else {
+        print("detected Duplicates within the square!")
+        return false
+      }
+      
+      //Checking Rows
+      if checkDuplicate(val: rowElement, on: rowCheckSet) {
+        rowCheckSet.insert(rowElement)
+      }else {
+        print("detected Duplicates within the rows!")
+        
+        return false
+      }
+      
+      //Checking Columns
+      if checkDuplicate(val: colElement, on: colCheckSet) {
+        colCheckSet.insert(colElement)
+      }else {
+        print("detected Duplicates within the columns!")
+        return false
+      }
+    }
+    //3개의 rows 씩 잘라서 진행.
+    if itemCount % 27 == 0 {
+      for i in 0..<squareSet.count{
+        squareSet[i].removeAll()
+      }
+    }
+    
+    rowCheckSet.removeAll()
+    colCheckSet.removeAll()
+  }
+  return true
+  
+}
+
+
+func checkDuplicate(val: Character, on set: Set<Character>) -> Bool {
+  if val == "." {return true}
+  else if set.contains(val){
+    return false
+  }
+  return true
+}
+```
+
+Time Complexity = `O(n^2)`
+
+Space Complexity = `O(n)`
+
   </details>
