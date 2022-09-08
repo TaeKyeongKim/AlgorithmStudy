@@ -636,14 +636,14 @@ Space Complexity = `O(n)`
        -> 문제 : loop 에서 i번쨰 row 요소 전체를 순회 하기 때문에 squareSet 하나씩 검사하는것은 불가능.
      
      - row 에 있는 모든 요소들을 sqaureSet 에 집어 넣기 위해선 3개의 sqaureSet 이 필요했다. 
-     따라서 `var squareSet = Array(repeating: Set<Character>(), count: (board.count/3)) 와 같이 squareSet 을 초기화 해주었고 i번째 row 를 순회 할때 3개씩 요소를 끊어서 sqaureSet 에 할당해주었다. 
+     따라서 `var squareSet = Array(repeating: Set<Character>(), count: (board.count/3))` 와 같이 squareSet 을 초기화 해주었고 i번째 row 를 순회 할때 3개씩 요소를 끊어서 sqaureSet 에 할당해주었다. 
      
     <img width="1100" alt="image" src="https://user-images.githubusercontent.com/36659877/189092565-2fe9c6ff-1c55-4cd1-89e2-dba07c3ad0db.png">
   
   
     > 결과 
-    
-    ```swift
+   
+```swift
     func isValidSudoku(_ board: [[Character]]) -> Bool {
   var itemCount = 0
   var squareSet = Array(repeating: Set<Character>(), count: (board.count/3))
