@@ -718,6 +718,164 @@ Space Complexity = `O(n)`
   
   [문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/770/)
   
+  > 고민 
+  - 어떤식으로 element 을 회전시에 배치해야할지 고민
+  - n*n 의 배열을 어떻게 순회 해야할지 고민 
+  - Element 회전 알고리즘 세우기
   
+  > 해결 
+  
+  > 1.0 어떤식으로 element 을 회전시에 배치해야할지 고민
+  전반적인 배열의 요소를 배치하는것은 아래의 그래프처럼 i 번째 row 를 순회 하면서 각각의 요소를 각변에 계산된 좌표에 값을 할당한다. 
+
+<img width="932" alt="image" src="https://user-images.githubusercontent.com/36659877/189478006-1cfb6d97-d3d1-42de-a969-fb8075f2da9e.png">
+
+  
+  > 2.0 n*n 의 배열을 어떻게 순회 해야할지 고민
+  - 일단 i 번째 row 를 순회 하고, j 번째 요소를 순회 할 outter loop 과 inner loop 이 필요하다. 
+  - `outer loop`: n 개의 row 를 어떻게 순회 할까? 
+    - 필요한 row 의 개수는 몇개 인가? 
+      - 4x4 배열 일때를 가정해보자 
+      - 아래 그림처럼 2개의 사각형으로 나눌수가 있다. 그리고 row 의 정보만으로 모든 요소를 돌면서 rotate 이 가능하다.
+      
+     <img width="883" alt="image" src="https://user-images.githubusercontent.com/36659877/189478013-6f081678-1499-42d1-8865-1c276a0b4e41.png">
+
+      
+      - n 이 4 일때, `i = 0,1` 위 그림처럼 두번의 row 를 순회 할것이다. 그렇다면 다른 케이스를 한번 생각해보고 outer loop 공식을 세워보자.
+      
+      |n|i|
+      |---|-----|
+      |1|(0)|
+      |2|(0)|
+      |3|(0,1)|
+      |4|(0,1)|
+      |5|(0,1)|
+      |6|(0,1,2)|
+      |10|(0,1,2,3,4)|
+      
+      - 위 테이블 n 과 i 값을 분석해보면 `i = 0..<N/2` 공식을 추론 할수 있었다. 
+      - `inner loop`: 몇개의 요소를 각 row 에서 순회 해야할까? 
+      - 두개의 사각형으로 나누면 외부의 사각형은 `0 부터 N-1` 까지의 indexing 이 필요하다. 
+      - 내부 사각형에서는 외부사각형에서 회전한 값을 건들이지 말아야한다. `j = N-i-1` 을 inner loop 에 할당해주면 주어진 요구사항에 마추어 j 요소의 순회를 가능하게 할수있다.
+      
+   <img width="909" alt="image" src="https://user-images.githubusercontent.com/36659877/189477172-63115e8a-6b2a-4942-ac03-5a2c22233d0d.png">
+ 
+  > 3.0 Element 회전 알고리즘 세우기
+  - 1.0 에서 찾은 방법을 어떤 로직을 사용해서 구현해야할까? 
+  - 일단 전체적인 알고리즘의 흐름은 아래와 같다. 
+  - `ex) i = 0, j  = 0`
+  <img width="904" alt="image" src="https://user-images.githubusercontent.com/36659877/189478459-9530b5fd-8732-405d-9295-67bec9855dd5.png">
+  
+  ```swift 
+  //Top 에 있는 요소를 temp 에 저장 
+  let temp = matrix[0][0]
+  
+  //Top 에 있는 요소에 할당 
+  matrix[0][0] = matrix[3][0]
+  
+  //Left 에 있는 요소에 할당 
+  matrix[3][0] = matrix[3][3]
+  
+  //Bottom 에 있는 요소에 할당 
+  matrix[3][3] = matrix[0][3]
+  
+  //Right 에 있는 요소에 할당 
+  matrix[0][3] = temp
+  ```
+  
+  - 위 코드를 모든 i,j 의 값이 들어올때 rotate 될 자리의 index 를 계산해야하는데, 몇개의 예시를 만들어 패턴을 찾고 로직을 만들어보자 
+  
+  ```
+  // i = 0, j = 0 
+  //Top 에 있는 요소를 temp 에 저장 
+  let temp = matrix[0][0]
+  
+  //Top 에 있는 요소에 할당 
+  matrix[0][0] = matrix[3][0]
+  
+  //Left 에 있는 요소에 할당 
+  matrix[3][0] = matrix[3][3]
+  
+  //Bottom 에 있는 요소에 할당 
+  matrix[3][3] = matrix[0][3]
+  
+  //Right 에 있는 요소에 할당 
+  matrix[0][3] = temp
+  
+  
+  // i = 0, j = 1
+  //Top 에 있는 요소를 temp 에 저장 
+  let temp = matrix[0][1]
+  
+  //Top 에 있는 요소에 할당 
+  matrix[0][1] = matrix[2][0]
+  
+  //Left 에 있는 요소에 할당 
+  matrix[2][0] = matrix[3][2]
+  
+  //Bottom 에 있는 요소에 할당 
+  matrix[3][2] = matrix[1][3]
+  
+  //Right 에 있는 요소에 할당 
+  matrix[1][3] = temp
+
+
+  //i = 0, j = 2 
+  //Top 에 있는 요소에 할당 
+  matrix[0][2] = matrix[1][0]
+  
+  //Left 에 있는 요소에 할당 
+  matrix[1][0] = matrix[3][1]
+  
+  //Bottom 에 있는 요소에 할당 
+  matrix[3][1] = matrix[2][3]
+  
+  //Right 에 있는 요소에 할당 
+  matrix[2][3] = temp
+  ```
+  
+  > 해결
+  
+  - 위 패턴을 각각 의 side 마다 분석하면 아래와 같은 로직으로 문제를 해결할수 있다. 
+  
+  ```swift 
+  
+func rotate(_ matrix: inout [[Int]]) {
+  
+  let N =  matrix.count
+  
+  for i in 0..<N/2 {
+    
+    for j in i..<N-1-i {
+      //Store the First element in square
+      let temp = matrix[i][j]
+      
+      //Allocate top Element
+      matrix[i][j] = matrix[N-j-1][i]
+      
+      //Allocate Leftside Element
+      matrix[N-j-1][i] = matrix[N-i-1][N-j-1]
+      
+      //Allocate bottom element
+      matrix[N-i-1][N-j-1] = matrix[j][N-i-1]
+      
+      
+      
+      //Allocate rightside element
+      matrix[j][N-i-1] = temp
+      
+    }
+  }
+  
+}
+
+```
+
+Time complexity = `O(n^2)`
+
+Space complexity = `O(n)`
+
   </details>
+  
+  
   
