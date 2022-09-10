@@ -46,7 +46,7 @@ func isValidSudoku(_ board: [[Character]]) -> Bool {
         return false
       }
     }
-    
+    //3개의 rows 씩 잘라서 진행.
     if itemCount % 27 == 0 {
       for i in 0..<squareSet.count{
         squareSet[i].removeAll()
