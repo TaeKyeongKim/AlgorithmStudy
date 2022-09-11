@@ -1019,8 +1019,10 @@ func reverse(_ x: Int) -> Int {
  
  > 해결
  - 딕셔너리를 이용해 문제해결 
- > 1.0 `s` 를 순회하여 dictionary 에 `key = letter` , `value = count` 를 할당 .
+ > 1.0 `s` 를 순회하여 dictionary 에 `key = letter` , `value = count` 를 할당.
+ 
  > 2.0 `s` 를 다시한번 순회하여 각 요소를 dictionary 의 key 값에 넣어 중복된 count 값을 비교한다.
+ 
  > 3.0 count 값이 1인 index 를 리턴 
   
  > 결과  
