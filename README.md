@@ -877,5 +877,69 @@ Space complexity = `O(n)`
 
   </details>
   
-  
+---
+
+## String 
+
+<details> 
+
+<summary> 1.0 Reverse String </summary> 
+
+[문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/879/) 
+
+> 고민 
+- reverse 를 사용하지 않고 문제를 해결할수 있는 방법이 있을까? 
+
+
+> 해결 
+- two Pointer 를 사용해서 문제를 해결 했다. 
+
+
+### 시도 
+
+- 배열의 첫번째 요소 부터 가르키는 포인터를 `pointer` 라고 불렀다. 
+- 배열의 마지막 요소 부터 가르키는 포인터를 `index` 라고 불렀다. 
+- while 문을 사용해서 문제를 해결하려고 시도 했다. 
+   - 예시로 주어진 배열의 문장은 `["H","E","L","L","O"]` -> 길이가 5인 배열이였다. 
+   - while 의 컨디션을 아래와 같이 주었고, 예시로주어진 배열은 해결할수 있었다. 
+   ```swift 
+   var pointer = 0 
+   var index = arr.count - 1 
+   
+   while index != pointer { 
+   
+     arr.swapAt(index, pointer) 
+     index -= 1
+     pointer += 1
+    }
+   }
+   ```
+   - 하지만 배열의 크기가 홀수 일때 index 와 pointer 가 같아지는 시점이 없기 때문에 while 문 컨디션을 아래와 같이 수정해주었다. 
+   
+> 결과 
+
+   ```swift 
+   
+   var pointer = 0 
+   var index = arr.count - 1 
+   
+   while index >= pointer { 
+   
+     arr.swapAt(index, pointer) 
+     index -= 1
+     pointer += 1
+    }
+   }
+   
+   ```
+ 
+ Time complexity = `O(logn)`
+ 
+ Space complexity = `O(1)`
+ 
+</details> 
+
+
+
+
   
