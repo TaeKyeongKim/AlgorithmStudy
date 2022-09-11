@@ -24,4 +24,6 @@ var array: [Character] = ["H","a","n","n","a","h"]
 //print(rotate(&array))
 //print(reverseString(&array))
 //print(reverse(0))
-print(firstUniqChar("aabb"))
+//print(firstUniqChar("aabb"))
+
+print(isAnagram("😘한긓", "😘한긓"))

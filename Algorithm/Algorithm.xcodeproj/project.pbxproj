@@ -23,6 +23,7 @@
 		B75424B728CD9ABE0043921E /* ReverseString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424B628CD9ABE0043921E /* ReverseString.swift */; };
 		B75424B928CDA5EF0043921E /* Revserse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424B828CDA5EF0043921E /* Revserse.swift */; };
 		B75424BB28CDB91F0043921E /* FirstUniqueChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424BA28CDB91F0043921E /* FirstUniqueChar.swift */; };
+		B75424BD28CDC0200043921E /* IsAnagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424BC28CDC0200043921E /* IsAnagram.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		B75424B628CD9ABE0043921E /* ReverseString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseString.swift; sourceTree = "<group>"; };
 		B75424B828CDA5EF0043921E /* Revserse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revserse.swift; sourceTree = "<group>"; };
 		B75424BA28CDB91F0043921E /* FirstUniqueChar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUniqueChar.swift; sourceTree = "<group>"; };
+		B75424BC28CDC0200043921E /* IsAnagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsAnagram.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				B75424B628CD9ABE0043921E /* ReverseString.swift */,
 				B75424B828CDA5EF0043921E /* Revserse.swift */,
 				B75424BA28CDB91F0043921E /* FirstUniqueChar.swift */,
+				B75424BC28CDC0200043921E /* IsAnagram.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B75424B128C86CA20043921E /* TwoSum.swift in Sources */,
+				B75424BD28CDC0200043921E /* IsAnagram.swift in Sources */,
 				B75424B528CB2AE70043921E /* RotateImage.swift in Sources */,
 				B75424AD28C72C900043921E /* plusOne.swift in Sources */,
 				B75424A928C593DF0043921E /* singleNumber.swift in Sources */,
