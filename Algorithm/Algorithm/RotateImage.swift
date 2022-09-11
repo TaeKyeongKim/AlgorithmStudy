@@ -39,6 +39,6 @@ func rotate(_ matrix: inout [[Int]]) {
     }
   }
   
-//  print(matrix)
+  print(matrix)
 }
 

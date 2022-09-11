@@ -10,8 +10,8 @@ import Foundation
 print("Hello, World!")
 
 let test = LeetNum9()
-var array:[[Int]] = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
-var array2 = [1]
+var array: [Character] = ["H","a","n","n","a","h"]
+//var array2 = [1]
 //print(removeDuplicates(&array))
 //var arr = Array(repeating: Set<Character>(), count: 9)
 //rotate(&array, 2)
@@ -20,5 +20,6 @@ var array2 = [1]
 //print(moveZeroes(&array))
 //print(twoSum(array, 4))
 //print(isValidSudoku(array))
-print(rotate(&array))
+//print(rotate(&array))
+print(reverseString(&array))
 
