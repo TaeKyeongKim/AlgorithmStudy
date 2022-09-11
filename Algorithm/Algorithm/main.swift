@@ -7,8 +7,6 @@
 
 import Foundation
 
-print("Hello, World!")
-
 let test = LeetNum9()
 var array: [Character] = ["H","a","n","n","a","h"]
 
@@ -26,4 +24,5 @@ var array: [Character] = ["H","a","n","n","a","h"]
 //print(reverse(0))
 //print(firstUniqChar("aabb"))
 
-print(isAnagram("😘한긓", "😘한긓"))
+//print(isAnagram("😘한긓", "😘한긓"))
+print(isPalindrome("Hello, world! zażółć gęślą jaźń"))
