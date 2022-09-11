@@ -1006,17 +1006,52 @@ func reverse(_ x: Int) -> Int {
  Time complexity = `O(n)`
  
  Space complexity = `O(n)`
- 
- 
-
-
-
-
-
-
 
 </details>
 
+<details> 
+ <summary> 3.0 First Unique Character in a String </summary> 
+ 
+ [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/881/)
+ 
+ > 고민 
+ - 중복된 요소의 개수를 어떻게 count 할까? 
+ 
+ > 해결
+ - 딕셔너리를 이용해 문제해결 
+ > 1.0 `s` 를 순회하여 dictionary 에 `key = letter` , `value = count` 를 할당 .
+ > 2.0 `s` 를 다시한번 순회하여 각 요소를 dictionary 의 key 값에 넣어 중복된 count 값을 비교한다.
+ > 3.0 count 값이 1인 index 를 리턴 
+  
+ > 결과  
+ 
+ ```swift 
+ 
+ func firstUniqChar(_ s: String) -> Int {
+  
+  var dict:[Character:Int] = [:]
+  
+  for character in s {
+    if dict[character] != nil, let count = dict[character] {
+      dict.updateValue(count + 1, forKey: character)
+    }else {
+      dict.updateValue(1, forKey: character)
+    }
+  }
+  
+  for (index,character) in s.enumerated() {
+    if dict[character] == 1 {
+      return index
+    }
+  }
+  return -1
+}
 
+```
+
+Time Complexity = `O(n)`
+Space Complexity = `O(n)`
+ 
+</details>
 
   
