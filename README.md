@@ -1092,3 +1092,34 @@ Space Complexity = `O(n)`
  SpaceComplexity = `O(1)`
 
 </details>
+
+
+<details> 
+ <summary> 5.0 Valid Palindrome </summary> 
+ 
+ [문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/883/) 
+ 
+ > 고민 
+ - 어떻게 알파벳 과 숫자를 필터링 해야하나?
+ 
+ > 해결
+ - `CharacterSet` 의 `alphanumerics` 을 사용해서 필터링 과정을 거쳐 알파벳 과 숫자를 필터링 해준다. 
+ - 이때 주어진 스트링을 unicodeScalars 로 변환 시켜주어 필터링 해주어야한다. 
+ - [참조](https://forums.swift.org/t/removing-characterset-characters-from-a-string-seems-hard/47935)
+ 
+ > 결과 
+ 
+ ```swift
+ 
+ func isPalindrome(_ s: String) -> Bool {
+  let result = String(s.unicodeScalars.filter({CharacterSet.alphanumerics.contains($0)})).map({$0.lowercased()})
+  let reversed = result.reversed()
+  return result.joined() == reversed.joined()
+ }
+
+ ```
+
+Time Complexity = `O(n)`
+Space Complexity = `O(1)`
+ 
+</details> 
