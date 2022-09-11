@@ -23,5 +23,5 @@ var array: [Character] = ["H","a","n","n","a","h"]
 //print(isValidSudoku(array))
 //print(rotate(&array))
 //print(reverseString(&array))
-print(reverse(0))
-
+//print(reverse(0))
+print(firstUniqChar("aabb"))
