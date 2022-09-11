@@ -11,6 +11,7 @@ print("Hello, World!")
 
 let test = LeetNum9()
 var array: [Character] = ["H","a","n","n","a","h"]
+
 //var array2 = [1]
 //print(removeDuplicates(&array))
 //var arr = Array(repeating: Set<Character>(), count: 9)
@@ -21,5 +22,6 @@ var array: [Character] = ["H","a","n","n","a","h"]
 //print(twoSum(array, 4))
 //print(isValidSudoku(array))
 //print(rotate(&array))
-print(reverseString(&array))
+//print(reverseString(&array))
+print(reverse(0))
 

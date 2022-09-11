@@ -21,6 +21,7 @@
 		B75424B328C87BE70043921E /* validSudoKu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424B228C87BE70043921E /* validSudoKu.swift */; };
 		B75424B528CB2AE70043921E /* RotateImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424B428CB2AE70043921E /* RotateImage.swift */; };
 		B75424B728CD9ABE0043921E /* ReverseString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424B628CD9ABE0043921E /* ReverseString.swift */; };
+		B75424B928CDA5EF0043921E /* Revserse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424B828CDA5EF0043921E /* Revserse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		B75424B228C87BE70043921E /* validSudoKu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validSudoKu.swift; sourceTree = "<group>"; };
 		B75424B428CB2AE70043921E /* RotateImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateImage.swift; sourceTree = "<group>"; };
 		B75424B628CD9ABE0043921E /* ReverseString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseString.swift; sourceTree = "<group>"; };
+		B75424B828CDA5EF0043921E /* Revserse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revserse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				B75424B228C87BE70043921E /* validSudoKu.swift */,
 				B75424B428CB2AE70043921E /* RotateImage.swift */,
 				B75424B628CD9ABE0043921E /* ReverseString.swift */,
+				B75424B828CDA5EF0043921E /* Revserse.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				B75424B528CB2AE70043921E /* RotateImage.swift in Sources */,
 				B75424AD28C72C900043921E /* plusOne.swift in Sources */,
 				B75424A928C593DF0043921E /* singleNumber.swift in Sources */,
+				B75424B928CDA5EF0043921E /* Revserse.swift in Sources */,
 				B75424AF28C85A2F0043921E /* Movezeros.swift in Sources */,
 				B75424A328C1C0CC0043921E /* MaxProfit.swift in Sources */,
 				B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */,
