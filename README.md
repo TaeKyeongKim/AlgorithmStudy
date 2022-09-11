@@ -940,6 +940,83 @@ Space complexity = `O(n)`
 </details> 
 
 
+<details> 
+
+<summary> 2.0 Reverse Integer </summary> 
+
+[문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/880/)
+
+> 고민 
+- 10 나눈 나머지 값을 어떻게 하면 알맞은 자리수에 할당할수 있을까? 
+
+
+> 해결 
+
+### 시도1 
+- [String] 을 사용해서 1의 자리에서 부터 계산된 나머지값을 append 시켜준다음 joined 해준다. 
+
+```swift 
+
+func reverse(_ x: Int) -> Int {
+  var val = abs(x)
+  let sign = x > 0 ? 1:-1
+  var digits:[String] = []
+  
+  while val != 0 { 
+    let remainder = val % 10 
+    val = val / 10 
+    digits.append(String(remainder)!)
+  }
+  
+  let reversedValue = signed * Int(digits.joined())!
+}
+
+```
+ - 문제 : Extra memory 를 사용함. 
+ 
+ 
+ ### 시도2
+ 
+ - `reversedValue` 를 먼저 선언하고 iteration 마다 10 을 곱해주고 나머지 값을 더해주는 로직을 적용
+ 
+ > 결과 
+ 
+ ```swift 
+ 
+ func reverse(_ x: Int) -> Int {
+  var val = abs(x)
+  let sign = x > 0 ? 1:-1
+  var reversedValue = 0
+  
+  while val != 0 {
+    let remainder = val % 10
+    val = val / 10
+    reversedValue = reversedValue * 10 + remainder
+  }
+  
+  reversedValue *= sign
+  if reversedValue >= Int32.max-1 || reversedValue <= Int32.min
+  {return 0}
+  
+  return reversedValue
+ } 
+ 
+ ```
+ 
+ Time complexity = `O(n)`
+ 
+ Space complexity = `O(n)`
+ 
+ 
+
+
+
+
+
+
+
+</details>
+
 
 
   
