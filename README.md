@@ -1056,4 +1056,39 @@ Space Complexity = `O(n)`
  
 </details>
 
-  
+
+
+<details> 
+ <summary> 4.0 Valid Anagram </summary> 
+ 
+ [문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/882/) 
+ 
+ > 고민 
+ - 어떻게 주어진 두개의 string 에서 각각의 character 일치하는지 알수 있을까? 
+ 
+ 
+ > 해결 
+ 
+ ### 시도1 
+ 
+ - Set 을 이용해서 문제를 풀려고 했으나, 중복된 character 의 개수도 일치해야한다는것을 깨닫고 다른 방법을 찾아봤다. 
+ 
+ 
+ ### 시도2 
+ 
+ - Character 는 고유한 unicode 로 이루워져있다. 
+ - 이 값을 사용해서 각 단어를 sort 해준다음 비교하면 각 string 을 구성하는 characters 가 일치하는지 알수 있지 않을까 해서 시도함. 
+ 
+ > 결과 
+ 
+ ```swift 
+ func isAnagram(_ s: String, _ t: String) -> Bool {
+  return s.sorted(by: {$0 < $1}) == t.sorted(by: {$0 < $1})
+ }
+ ```
+ 
+ TimeComplexity = `O(NlogN)`
+ 
+ SpaceComplexity = `O(1)`
+
+</details>
