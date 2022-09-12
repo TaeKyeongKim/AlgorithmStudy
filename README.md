@@ -1123,3 +1123,65 @@ Time Complexity = `O(n)`
 Space Complexity = `O(1)`
  
 </details> 
+
+<details>
+
+ <summary> 6.0  String to Integer (atoi) </summary> 
+ 
+ [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/884/)
+ 
+ > 고민 
+ 
+ - `' '`, `'+'`, `'-'`, and `'.'` 값들을 어떻게 필터링 해줄까? 
+
+
+> 해결 
+
+- 1.0 문자열 앞에 `' '` 을 없애 주기 위해 `trimmingCharacters` 을 사용해서 whiteSpace 들을 제거했다. 
+- 2.0 문자열 앞에 `'+'`, `'-'` 를 필터링해주기 위해 `prefix()` 메소드를 사용했다. 
+- 3.0 나머지 문자열에서 제일 앞에 위치한 숫자만 뽑아내야한다. -> 모든숫자는 Ascii code 로 손쉽게 구별할수 있으므로 `48~57` 까지의 ascii value 만 꺼내서 계산해주었다. 
+
+```swift
+func myAtoi(_ s: String) -> Int {
+  
+  var removedWhiteSpace = s.trimmingCharacters(in: CharacterSet.whitespaces)
+
+  var sign = 1
+  var value = 0
+  
+  if removedWhiteSpace.hasPrefix("-"){
+    sign = -1
+    removedWhiteSpace.removeFirst()
+  }
+  else if removedWhiteSpace.hasPrefix("+"){
+    sign = 1
+    removedWhiteSpace.removeFirst()
+  }
+  
+  for char in removedWhiteSpace {
+    if char.asciiValue! >= 48 && char.asciiValue! <= 57 && value < Int32.max && value > Int32.min {
+      value = value * 10 + Int(String(char))!
+    }else {
+      break
+    }
+  }
+  
+  var res = sign * value
+  
+  if res > Int32.max - 1 {
+    res = Int(Int32.max)
+  }
+  else if res < Int32.min {
+    res = Int(Int32.min)
+  }
+            
+  return res
+}
+
+```
+
+Time Complexity = `O(n)`
+
+Space Complexity = `O(n)`
+
+</details> 
