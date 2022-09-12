@@ -25,4 +25,5 @@ var array: [Character] = ["H","a","n","n","a","h"]
 //print(firstUniqChar("aabb"))
 
 //print(isAnagram("😘한긓", "😘한긓"))
-print(isPalindrome("Hello, world! zażółć gęślą jaźń"))
+//print(isPalindrome("Hello, world! zażółć gęślą jaźń"))
+print(myAtoi("20000000000000000000"))
