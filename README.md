@@ -1227,9 +1227,10 @@ Space Complexity = `O(n)`
 <details> 
  <summary> 8.0 Longest Common Prefix </summary> 
  
- [문제링크] (https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/887/) 
+ [문제링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/887/) 
  
  > 해결 
+ 
  - swift foundation 에 있는 `commonPrefix` 메소드 를 사용하여 문제 해결 
  
  
