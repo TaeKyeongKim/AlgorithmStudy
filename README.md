@@ -1223,3 +1223,30 @@ Space Complexity = `O(n)`
  
 
 </details> 
+
+<details> 
+ <summary> 8.0 Longest Common Prefix </summary> 
+ 
+ [문제링크] (https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/887/) 
+ 
+ > 해결 
+ - swift foundation 에 있는 `commonPrefix` 메소드 를 사용하여 문제 해결 
+ 
+ 
+ > 결과 
+ 
+ ```swift
+ func longestCommonPrefix(_ strs: [String]) -> String {
+  var prefix = strs.first!
+  for i in 1..<strs.count {
+    prefix = prefix.commonPrefix(with: strs[i])
+  }
+  return prefix
+ }
+ ```
+                          
+ Time Complexity = `O(n)`
+                          
+ Space Complexity = `O(n)`
+ 
+ </details>
