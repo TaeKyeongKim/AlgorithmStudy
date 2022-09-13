@@ -1185,3 +1185,41 @@ Time Complexity = `O(n)`
 Space Complexity = `O(n)`
 
 </details> 
+
+<details>
+ <summary> 7.0 strStr </summary> 
+ 
+ [문제 링크](https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/885/)
+ 
+ > 고민 
+ - needle 이 어떻게 haystack 안에 있는지 확인하고 일치하는 첫번쨰 인덱스 를 반환해줄까? 
+ 
+ > 해결 
+ - `haystack` 을 순회 하면서 `hayStack.firstIndex + i` 와 `(haystack.startIndex, offsetBy: needle.count - 1 + i)` start, end  인덱스를 계산해준다. 
+ - 계산된 start, end 를 `hayStack[start...end] == needle` 인지 확인하고 맞으면 `i` 를 반환하는 로직을 구성해 문제를 해결했다. 
+ 
+ > 결과 
+ 
+ ```swift 
+ func strStr(_ haystack: String, _ needle: String) -> Int {
+
+  if haystack.count < needle.count {return -1}
+  
+  for i in 0...haystack.count - needle.count {
+    let newStartIndex = haystack.index(haystack.startIndex, offsetBy: i)
+    let newEndIndex = haystack.index(haystack.startIndex, offsetBy: needle.count - 1 + i)
+    if haystack[newStartIndex...newEndIndex] == needle {
+      return i
+    }
+  }
+
+  return -1
+ }
+ ```
+ 
+ Time complexity = `O(n)` 
+ 
+ Space complexity = `O(1)` 
+ 
+
+</details> 
