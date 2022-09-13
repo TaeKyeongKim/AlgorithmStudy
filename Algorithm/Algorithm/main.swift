@@ -8,7 +8,7 @@
 import Foundation
 
 let test = LeetNum9()
-var array: [Character] = ["H","a","n","n","a","h"]
+var array = ["a"]
 
 //var array2 = [1]
 //print(removeDuplicates(&array))
@@ -28,6 +28,10 @@ var array: [Character] = ["H","a","n","n","a","h"]
 //print(isPalindrome("Hello, world! zażółć gęślą jaźń"))
 //print(myAtoi("20000000000000000000"))
 
-let haystack = "aaa", needle = "aaaa"
+//let haystack = "aaa", needle = "aaaa"
 //let haystack = "leetcode", needle = "leet"
-print(strStr(haystack, needle))
+//print(strStr(haystack, needle))
+
+
+print(longestCommonPrefix(array))
+

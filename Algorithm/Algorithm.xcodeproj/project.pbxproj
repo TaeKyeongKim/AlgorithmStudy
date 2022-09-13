@@ -27,6 +27,7 @@
 		B75424BF28CDD71B0043921E /* IsPalindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424BE28CDD71B0043921E /* IsPalindrome.swift */; };
 		B75424C128CEB9870043921E /* Atoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C028CEB9870043921E /* Atoi.swift */; };
 		B75424C328D000000043921E /* strStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C228D000000043921E /* strStr.swift */; };
+		B75424C528D016270043921E /* LongestCommonPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C428D016270043921E /* LongestCommonPrefix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +64,7 @@
 		B75424BE28CDD71B0043921E /* IsPalindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPalindrome.swift; sourceTree = "<group>"; };
 		B75424C028CEB9870043921E /* Atoi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atoi.swift; sourceTree = "<group>"; };
 		B75424C228D000000043921E /* strStr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strStr.swift; sourceTree = "<group>"; };
+		B75424C428D016270043921E /* LongestCommonPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongestCommonPrefix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				B75424BE28CDD71B0043921E /* IsPalindrome.swift */,
 				B75424C028CEB9870043921E /* Atoi.swift */,
 				B75424C228D000000043921E /* strStr.swift */,
+				B75424C428D016270043921E /* LongestCommonPrefix.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				B75424A328C1C0CC0043921E /* MaxProfit.swift in Sources */,
 				B72B5B0028BB920900D83260 /* leetNum9.swift in Sources */,
 				B75424C128CEB9870043921E /* Atoi.swift in Sources */,
+				B75424C528D016270043921E /* LongestCommonPrefix.swift in Sources */,
 				B75424AB28C59D9D0043921E /* intersect.swift in Sources */,
 				B75424B328C87BE70043921E /* validSudoKu.swift in Sources */,
 				B72B5B0228C06BA100D83260 /* Removeduplicates.swift in Sources */,
