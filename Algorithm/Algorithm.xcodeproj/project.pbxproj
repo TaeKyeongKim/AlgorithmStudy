@@ -26,6 +26,7 @@
 		B75424BD28CDC0200043921E /* IsAnagram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424BC28CDC0200043921E /* IsAnagram.swift */; };
 		B75424BF28CDD71B0043921E /* IsPalindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424BE28CDD71B0043921E /* IsPalindrome.swift */; };
 		B75424C128CEB9870043921E /* Atoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C028CEB9870043921E /* Atoi.swift */; };
+		B75424C328D000000043921E /* strStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C228D000000043921E /* strStr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,7 @@
 		B75424BC28CDC0200043921E /* IsAnagram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsAnagram.swift; sourceTree = "<group>"; };
 		B75424BE28CDD71B0043921E /* IsPalindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPalindrome.swift; sourceTree = "<group>"; };
 		B75424C028CEB9870043921E /* Atoi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atoi.swift; sourceTree = "<group>"; };
+		B75424C228D000000043921E /* strStr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strStr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				B75424BC28CDC0200043921E /* IsAnagram.swift */,
 				B75424BE28CDD71B0043921E /* IsPalindrome.swift */,
 				B75424C028CEB9870043921E /* Atoi.swift */,
+				B75424C228D000000043921E /* strStr.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				B75424AB28C59D9D0043921E /* intersect.swift in Sources */,
 				B75424B328C87BE70043921E /* validSudoKu.swift in Sources */,
 				B72B5B0228C06BA100D83260 /* Removeduplicates.swift in Sources */,
+				B75424C328D000000043921E /* strStr.swift in Sources */,
 				B75424BF28CDD71B0043921E /* IsPalindrome.swift in Sources */,
 				B75424A528C1EA5E0043921E /* Rotate.swift in Sources */,
 				B75424A728C5898D0043921E /* containsDuplicates.swift in Sources */,

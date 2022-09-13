@@ -26,4 +26,8 @@ var array: [Character] = ["H","a","n","n","a","h"]
 
 //print(isAnagram("😘한긓", "😘한긓"))
 //print(isPalindrome("Hello, world! zażółć gęślą jaźń"))
-print(myAtoi("20000000000000000000"))
+//print(myAtoi("20000000000000000000"))
+
+let haystack = "aaa", needle = "aaaa"
+//let haystack = "leetcode", needle = "leet"
+print(strStr(haystack, needle))
