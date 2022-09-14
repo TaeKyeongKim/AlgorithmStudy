@@ -1251,3 +1251,16 @@ Space Complexity = `O(n)`
  Space Complexity = `O(n)`
  
  </details>
+ 
+ ---- 
+ 
+## LinkedList
+
+<details> 
+<summary> Delete Node in a Linked List </summary> 
+
+</details>
+
+
+
+
