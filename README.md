@@ -1259,6 +1259,26 @@ Space Complexity = `O(n)`
 <details> 
 <summary> Delete Node in a Linked List </summary> 
 
+> 고민 
+- 주어진 LikedList  의 특정 node 를 지우면 되는데 함수의 input 은 linkedList 밖에 없어서 당황함 
+
+> 해결 
+- LikedList 와 특정 node 가 주어지는게 아니라 이 함수를 밖에서 사용했을때 함수에서 주어진 노드를 리스트에서 삭제하라는 뜻이였다. 
+- 주어진 노드의 값은 그 다음 값을 가지고 있다. 
+- 주어진 노드의 nextNode 는 `node.next.next` 를 가르키고 있는것이다. 
+![image](https://user-images.githubusercontent.com/36659877/190289656-fdc88f7a-f970-4bbd-b7ee-b261fa44c342.png)
+
+```swift
+ func deleteNode(_ node: ListNode?) {
+      node?.val = (node?.next!.val)!
+      node?.next = node?.next?.next
+    }
+```
+
+Time complexity = `O(1)` 
+
+Space complexity = `O(1)`
+
 </details>
 
 
