@@ -33,5 +33,12 @@ var array = ["a"]
 //print(strStr(haystack, needle))
 
 
-print(longestCommonPrefix(array))
-
+//print(longestCommonPrefix(array))
+let arr = [1,2,3,4,5]
+var head = ListNode(arr[0])
+for items in arr{
+  let node = ListNode(items)
+  head.next = node
+  head = head.next!
+}
+removeNthFromEnd(head, 2)

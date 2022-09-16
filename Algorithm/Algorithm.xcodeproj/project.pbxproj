@@ -29,6 +29,7 @@
 		B75424C328D000000043921E /* strStr.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C228D000000043921E /* strStr.swift */; };
 		B75424C528D016270043921E /* LongestCommonPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C428D016270043921E /* LongestCommonPrefix.swift */; };
 		B75424C728D2AEFC0043921E /* LinkedListDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C628D2AEFC0043921E /* LinkedListDelete.swift */; };
+		B75424C928D2C1770043921E /* removeFromNthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C828D2C1770043921E /* removeFromNthNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,6 +68,7 @@
 		B75424C228D000000043921E /* strStr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = strStr.swift; sourceTree = "<group>"; };
 		B75424C428D016270043921E /* LongestCommonPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongestCommonPrefix.swift; sourceTree = "<group>"; };
 		B75424C628D2AEFC0043921E /* LinkedListDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListDelete.swift; sourceTree = "<group>"; };
+		B75424C828D2C1770043921E /* removeFromNthNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeFromNthNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				B75424C228D000000043921E /* strStr.swift */,
 				B75424C428D016270043921E /* LongestCommonPrefix.swift */,
 				B75424C628D2AEFC0043921E /* LinkedListDelete.swift */,
+				B75424C828D2C1770043921E /* removeFromNthNode.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				B75424B528CB2AE70043921E /* RotateImage.swift in Sources */,
 				B75424AD28C72C900043921E /* plusOne.swift in Sources */,
 				B75424A928C593DF0043921E /* singleNumber.swift in Sources */,
+				B75424C928D2C1770043921E /* removeFromNthNode.swift in Sources */,
 				B75424C728D2AEFC0043921E /* LinkedListDelete.swift in Sources */,
 				B75424B928CDA5EF0043921E /* Revserse.swift in Sources */,
 				B75424AF28C85A2F0043921E /* Movezeros.swift in Sources */,
