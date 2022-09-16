@@ -1297,6 +1297,7 @@ Space complexity = `O(1)`
  - 연결된 list 의 다음 노드를 어떻게 알아낼까? 
  
  -> class 로 작성된 list 는 head 의 주소를 하는 `curr`, `prev`, 두개의 포인터를 사용하여 현재 가르키고 있는 노드, 이전노드를 가르키고 있는 변수를 만들어주었다. 
+ 
  -> for loop 을 `indexCnt-n` 번까지 순회하며 prev 는 curr 노드를, curr 은 다음 노드를 가르키킬수 있도록 구현.
  
  - 어떻게 list 의 연결을 끊어줄까?
