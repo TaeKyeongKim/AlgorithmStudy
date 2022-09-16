@@ -1257,7 +1257,7 @@ Space Complexity = `O(n)`
 ## LinkedList
 
 <details> 
-<summary> Delete Node in a Linked List </summary> 
+<summary> 1.0 Delete Node in a Linked List </summary> 
 
 > 고민 
 - 주어진 LikedList  의 특정 node 를 지우면 되는데 함수의 input 은 linkedList 밖에 없어서 당황함 
@@ -1281,6 +1281,67 @@ Space complexity = `O(1)`
 
 </details>
 
+<details> 
+ <summary> 2.0 Remove Nth Node From End of List </summary>
+ 
+ > 고민
+ - 어떻게 linked list 의 마지막 부터 n 번째의 요소를 지울수 있을끼? 
+ - 연결된 list 의 다음 노드를 어떻게 알아낼까? 
+ - 어떻게 list 의 연결을 끊어줄까?
+ 
+ > 해결 
+ - 어떻게 linked list 의 마지막 부터 n 번째의 요소를 지울수 있을끼?
+ -> node 의 다음 요소가 nil 일때까지 순회 하며 `indexCnt` 를 기록해두었다. 
+ 
+ - 연결된 list 의 다음 노드를 어떻게 알아낼까? 
+ -> class 로 작성된 list 는 head 의 주소를 하는 `curr`, `prev`, 두개의 포인터를 사용하여 현재 가르키고 있는 노드, 이전노드를 가르키고 있는 변수를 만들어주었다. 
+ -> for loop 을 `indexCnt-n` 번까지 순회하며 prev 는 curr 노드를, curr 은 다음 노드를 가르키킬수 있도록 구현.
+ 
+ - 어떻게 list 의 연결을 끊어줄까?
+   -> 아래의 그림과 같이 이전 노드의 다음 노드를 현재노드의 다음 노드로 연결시켜주고, 현재 노드는 삭제되어야할 노드이기 때문에 next 값을 0 으로 만들어 주어 list 의 연결 을 끊는다. 
+ <img width="673" alt="image" src="https://user-images.githubusercontent.com/36659877/190552944-2ca46155-8e82-4680-87fe-cea2d30b54d0.png">
 
-
+   -> 제일 처음 요소를 삭제해야하는 test case 가 있었는데, `indexCnt == n` 일때 현재 head 를 가르키고 있는 curr 포인터의 다음 노드를 다음 노드로 설정한뒤 curr 를 반환해주면서 문제를 해결했다.
+   
+   > 결과 
+   
+   ```swift 
+   func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
+  var indexCnt = 1
+  var counter = head
+  var curr = head
+  var prev: ListNode?
+  
+  //list 의 개수가 몇개인지 확인
+  while counter?.next != nil {
+    counter = counter?.next
+    indexCnt += 1
+  }
+  
+  //indexCnt 와 n 값이 같다면 제일 첫번째 요소를 지운다는 뜻.
+  if indexCnt == n {
+    curr = curr?.next
+    return curr
+  }
+  
+  //prev, curr 포인터 이동
+  for _ in 0..<indexCnt-n {
+    prev = curr
+    curr = curr?.next
+    // print(curr?.val)
+  }
+  
+  //prev 를 curr 다음 노드에 연결 한뒤 curr.next 를 끊어준다.
+  prev?.next = curr?.next
+  curr?.next = nil
+  
+  return head
+  }
+  
+  ```
+  Time complextiy = `O(n)`
+  
+  Space Complexity = `O(n)`
+ 
+</details> 
 
