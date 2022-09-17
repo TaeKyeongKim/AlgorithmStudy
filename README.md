@@ -1348,3 +1348,7 @@ Space complexity = `O(1)`
  
 </details> 
 
+<details> 
+ <summary> 3.0 Reverse Linked List </summary> 
+ 
+</details> 
