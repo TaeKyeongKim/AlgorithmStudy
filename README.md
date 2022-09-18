@@ -1368,13 +1368,8 @@ Space complexity = `O(1)`
  > - 4.0 `nextNode` 의 메모리 주소를 `curr.next` 주소로 할당시킴 
  > - 5.0 `curr` 노드가 nill 을 가르킬때까지 반복. 
  
- - 전체적인 포인터 진행 방향
+ - 전체적인 포인터 진행 방향 및 처음 포인터들이 가르키고 있는 노드 주소
  <img width="1194" alt="image" src="https://user-images.githubusercontent.com/36659877/190885309-c3856be0-7025-4aac-a3b9-7be2e65dcdb8.png">
- 
- 
- - 처음 포인터들이 가르키고 있는 노드 주소
- <img width="1217" alt="image" src="https://user-images.githubusercontent.com/36659877/190885350-1fe1ce62-77f3-4081-99cd-95cdf371078c.png">
-
 
  - 포인터의 메모리의 주소 업데이트 및 알고리즘 진행순서 도식화 
  <img width="952" alt="image" src="https://user-images.githubusercontent.com/36659877/190885382-9e0cc861-dfc0-440c-aa34-03e1c099ea04.png">
