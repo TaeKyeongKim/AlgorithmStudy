@@ -34,11 +34,20 @@ var array = ["a"]
 
 
 //print(longestCommonPrefix(array))
-let arr = [1,2,3,4,5]
-var head = ListNode(arr[0])
-for items in arr{
+let arr = [2,3,4,5]
+//현재 head 는 노드의 첫 노드를 가르킨다.
+var head: ListNode? = ListNode(1)
+//현재 head 의 첫번째 노드를 가르키는 주소를 pointer 에 할당
+var pointer: ListNode? = head
+
+
+for items in arr {
   let node = ListNode(items)
-  head.next = node
-  head = head.next!
+  //head 의 next 주소에 새로운 노드 할당
+  head?.next = node
+  //head 는 그 다음 값을 가르키고 있다.
+  head = head?.next
+  
 }
-removeNthFromEnd(head, 2)
+//print(head)
+reverseList(pointer)

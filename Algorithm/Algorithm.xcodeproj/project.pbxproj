@@ -30,6 +30,7 @@
 		B75424C528D016270043921E /* LongestCommonPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C428D016270043921E /* LongestCommonPrefix.swift */; };
 		B75424C728D2AEFC0043921E /* LinkedListDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C628D2AEFC0043921E /* LinkedListDelete.swift */; };
 		B75424C928D2C1770043921E /* removeFromNthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424C828D2C1770043921E /* removeFromNthNode.swift */; };
+		B75424CC28D630850043921E /* reverseListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75424CB28D630850043921E /* reverseListNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,7 @@
 		B75424C428D016270043921E /* LongestCommonPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongestCommonPrefix.swift; sourceTree = "<group>"; };
 		B75424C628D2AEFC0043921E /* LinkedListDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListDelete.swift; sourceTree = "<group>"; };
 		B75424C828D2C1770043921E /* removeFromNthNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeFromNthNode.swift; sourceTree = "<group>"; };
+		B75424CB28D630850043921E /* reverseListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reverseListNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				B75424C428D016270043921E /* LongestCommonPrefix.swift */,
 				B75424C628D2AEFC0043921E /* LinkedListDelete.swift */,
 				B75424C828D2C1770043921E /* removeFromNthNode.swift */,
+				B75424CB28D630850043921E /* reverseListNode.swift */,
 			);
 			path = Algorithm;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				B75424A728C5898D0043921E /* containsDuplicates.swift in Sources */,
 				B75424BB28CDB91F0043921E /* FirstUniqueChar.swift in Sources */,
 				B72B5AF928BB91BF00D83260 /* main.swift in Sources */,
+				B75424CC28D630850043921E /* reverseListNode.swift in Sources */,
 				B75424B728CD9ABE0043921E /* ReverseString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
