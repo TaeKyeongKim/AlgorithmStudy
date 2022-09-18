@@ -1351,4 +1351,61 @@ Space complexity = `O(1)`
 <details> 
  <summary> 3.0 Reverse Linked List </summary> 
  
+ > 고민 
+ - 리스트를 순회 하면서 pointer 를 어떤식으로 활용하여 뒤집어진 list 형태를 만들수 있을까? 
+ 
+ > 해결 
+ - 3 pointers 를 이용하여 문제를 해결. 
+ > - 뒤집어진 리스트를 기록할 Pointer = `reversedList` 
+ > - 현재 노드를 가르키는 Pointer = `curr`
+ > - 다음번째 노드를 가르키는 Pointer = `nextNode`
+ 
+ - 리스트 뒤집기 알고리즘 
+ - 현재 노드의 link 를 끊어 주고, 이전의 노드 를 next 로 설정해주며 문제를 해결. 
+ > - 1.0 `nextNode` 의 메모리 주소를 `reversedList` 에 할당해주며 기존 `curr` 노드의 링크의 방향을 바꿈. 
+ > - 2.0 `reversedList` 노드의 메모리 주소를 `curr` 노드로 업데이트 시킴. 
+ > - 3.0 `curr` 노드의 메모리 주소를 `nextNode` 로 할당. 
+ > - 4.0 `nextNode` 의 메모리 주소를 `curr.next` 주소로 할당시킴 
+ > - 5.0 `curr` 노드가 nill 을 가르킬때까지 반복. 
+ 
+ - 전체적인 포인터 진행 방향
+ <img width="1194" alt="image" src="https://user-images.githubusercontent.com/36659877/190885309-c3856be0-7025-4aac-a3b9-7be2e65dcdb8.png">
+ 
+ 
+ - 처음 포인터들이 가르키고 있는 노드 주소
+ <img width="1217" alt="image" src="https://user-images.githubusercontent.com/36659877/190885350-1fe1ce62-77f3-4081-99cd-95cdf371078c.png">
+
+
+ - 포인터의 메모리의 주소 업데이트 및 알고리즘 진행순서 도식화 
+ <img width="952" alt="image" src="https://user-images.githubusercontent.com/36659877/190885382-9e0cc861-dfc0-440c-aa34-03e1c099ea04.png">
+
+ 
+> 결과 
+
+```swift 
+func reverseList(_ head: ListNode?) -> ListNode? {
+  //revseredList 는 초기로 Nill 의 주소 값을 가지고 있음.
+  var revseredList: ListNode? = nil
+  //curr 은 head 의 첫번쨰 노드를 가르키고 있음.
+  var curr = head
+  //nextNode 는 head 의 다음 노드를 가르킴.
+  var nextNode = curr?.next
+  
+  while curr != nil {
+    //curr 의 다음 요소의 주소 값을 temp 로 지정
+    curr?.next = revseredList
+    revseredList = curr
+    curr = nextNode
+    nextNode = curr?.next
+  }
+  
+  return revseredList
+}
+``` 
+
+Time complexity = `O(n)`
+
+Space Complexity = `O(n)`
+
+ 
 </details> 
