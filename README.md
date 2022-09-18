@@ -1371,7 +1371,7 @@ Space complexity = `O(1)`
  - 전체적인 포인터 진행 방향 및 처음 포인터들이 가르키고 있는 노드 주소
  <img width="1194" alt="image" src="https://user-images.githubusercontent.com/36659877/190885309-c3856be0-7025-4aac-a3b9-7be2e65dcdb8.png">
 
- - 포인터의 메모리의 주소 업데이트 및 알고리즘 진행순서 도식화 
+ - 포인터의 메모리 주소 업데이트 및 알고리즘 진행순서 도식화 
  <img width="952" alt="image" src="https://user-images.githubusercontent.com/36659877/190885382-9e0cc861-dfc0-440c-aa34-03e1c099ea04.png">
 
  
@@ -1380,7 +1380,7 @@ Space complexity = `O(1)`
 ```swift 
 func reverseList(_ head: ListNode?) -> ListNode? {
   //revseredList 는 초기로 Nill 의 주소 값을 가지고 있음.
-  var revseredList: ListNode? = nil
+  var reversedList: ListNode? = nil
   //curr 은 head 의 첫번쨰 노드를 가르키고 있음.
   var curr = head
   //nextNode 는 head 의 다음 노드를 가르킴.
@@ -1388,13 +1388,13 @@ func reverseList(_ head: ListNode?) -> ListNode? {
   
   while curr != nil {
     //curr 의 다음 요소의 주소 값을 temp 로 지정
-    curr?.next = revseredList
-    revseredList = curr
+    curr?.next = reversedList
+    reversedList = curr
     curr = nextNode
     nextNode = curr?.next
   }
   
-  return revseredList
+  return reversedList
 }
 ``` 
 
