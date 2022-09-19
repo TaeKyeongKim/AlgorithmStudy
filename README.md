@@ -1485,8 +1485,11 @@ Space complexity = `O(1)`
      - case 1: 리스트가 비어있을경우 
      - case 2: 리스트가 홀수인경우 
      > `curr`, `inspector` two 포인터 를 사용해서 문제를 해결할수 있었다. 
+ 
      > `inspector` 는 각 iteration 마다 `다음 노드` 와 `2번째 다음 노드` 가 nil 인지 확인한다. 그리고 nil 이 아니라면 `inspector` 는 2개의 노드뒤 를 포인팅하게 되고, `curr` 은 다음 노드를 가르키게 된다. 
+ 
      > 만약 리스트 노드의 개수가 홀수 (3개 ~> [1,2,3]) 인경우엔 `curr.next` 인 [3] 노드를 반환하게 된다. 
+ 
      > [3] 을 reverse 해도 reversedList 의 다음 요소가 nil 일때까지만 original head 의 요소와 값을 비교할것이기 때문에 input 이 [1,2,1] 일 경우에도 이 알고리즘은 유효하게 된다.
      
 ![image](https://user-images.githubusercontent.com/36659877/191064360-89ba46c1-c99b-4643-bbbf-66a14bb32992.png)
