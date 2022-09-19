@@ -1404,3 +1404,60 @@ Space Complexity = `O(n)`
 
  
 </details> 
+
+
+<details> 
+ <summary> 4.0 Merge Two Sorted Lists </summary> 
+  
+  > 고민 
+  - `list1` 혹은 `list1` 의 값을 비교하는 중에 둘중의 하나의 값이 없을 경우에는 어떻게 해야하나? 
+  - 두개의 리스트 의 비교를 시작할떄 하나가 비어있을경우에는 어떻게 하나? 
+  
+  
+  > 해결 
+  > - Recursion 방법으로 문제를 해결 했다.
+  > - 리스트 둘중 하나가 비어있다면 다른 리스트 반환
+  > - 두개의 리스트의 `val` 값을 비교 하여 `mergeTwoLists(_:, _:)` 를 호출 
+  
+  - 메서드 호출 순서
+  <img width="1531" alt="image" src="https://user-images.githubusercontent.com/36659877/190960043-2e19ac66-1048-4c6b-b5b0-66663e2a0275.png">
+  
+  - 메서드 Call Stack 순서대로 반환되어 지는 값
+  <img width="1646" alt="image" src="https://user-images.githubusercontent.com/36659877/190960150-66d985d5-5abd-44bf-8a6b-9932cbc4f112.png">
+
+  - xcode Call stack when list1 = 1,2,4, list2 = 1,3,4
+  
+ <p align="center">
+   <img src="https://user-images.githubusercontent.com/36659877/190960763-ac221a4e-bd2f-4722-a4c9-6bf0d05578d5.png" width="350" height="250"> 
+   </p>
+   
+> 결과 
+
+```swift 
+func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
+ 
+  //리스트 둘중에 하나가 비어 있을경우
+  guard let list1 = list1 else {
+    return list2
+  }
+  guard let list2 = list2 else {
+    return list1
+  }
+
+  //리스트의 next 값이 nil 이 될때까지 진행
+  if list1.val < list2.val {
+    list1.next = mergeTwoLists(list1.next, list2)
+    return list1
+  } else {
+    list2.next = mergeTwoLists(list1, list2.next)
+    return list2
+  }
+  
+ }
+
+```
+Time complexity = `O(n+m)` where n, m refers to length of each list
+
+Space complexity = `O(n)` 
+  
+</details> 
