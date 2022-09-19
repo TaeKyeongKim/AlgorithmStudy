@@ -33,13 +33,16 @@ var array = ["a"]
 //print(strStr(haystack, needle))
 
 
+
 //print(longestCommonPrefix(array))
-let arr = [2,3,4,5]
+let arr = [3,4]
+let arr2:[Int] = [2,4]
 //현재 head 는 노드의 첫 노드를 가르킨다.
 var head: ListNode? = ListNode(1)
+var head2: ListNode? = ListNode(1)
 //현재 head 의 첫번째 노드를 가르키는 주소를 pointer 에 할당
-var pointer: ListNode? = head
-
+var list1: ListNode? = head
+var list2: ListNode? = head2
 
 for items in arr {
   let node = ListNode(items)
@@ -47,7 +50,18 @@ for items in arr {
   head?.next = node
   //head 는 그 다음 값을 가르키고 있다.
   head = head?.next
-  
 }
+
+for items in arr2 {
+  let node = ListNode(items)
+  //head 의 next 주소에 새로운 노드 할당
+  head2?.next = node
+  //head 는 그 다음 값을 가르키고 있다.
+  head2 = head2?.next
+}
+
 //print(head)
-reverseList(pointer)
+//print(mergeTwoLists(ListNode(5), list2))
+
+let mergedList = mergeTwoLists(list1, list2)
+print("d")
