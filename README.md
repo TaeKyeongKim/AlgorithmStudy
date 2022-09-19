@@ -1344,7 +1344,7 @@ Space complexity = `O(1)`
   ```
   Time complextiy = `O(n)`
   
-  Space Complexity = `O(n)`
+  Space Complexity = `O(1)`
  
 </details> 
 
@@ -1400,7 +1400,7 @@ func reverseList(_ head: ListNode?) -> ListNode? {
 
 Time complexity = `O(n)`
 
-Space Complexity = `O(n)`
+Space Complexity = `O(1)`
 
  
 </details> 
@@ -1458,6 +1458,97 @@ func mergeTwoLists(_ list1: ListNode?, _ list2: ListNode?) -> ListNode? {
 ```
 Time complexity = `O(n+m)` where n, m refers to length of each list
 
-Space complexity = `O(n)` 
+Space complexity = `O(1)` 
   
+</details> 
+
+<details> 
+ <summary> 5.0 Palindrome Linked List </summary> 
+ 
+ > 고민 
+ - 보통 배열이나 String 의 Palindrome(회문) 여부는 reverse 를 사용해서 원래 있던 값과 비교하는 식으로 구현해왔다. 하지만 문제에서 O(1) 의 Space Complexity 를 요구했기에 고민되는 부분이 많았다. 
+ - reverse 말고 다른 방법은 없을까? 
+ - reverse 를 어떻게 하면 extra memory 를 사용하지 않으면서 구현 할수 있을까? 
+ 
+ > 해결 
+ - reverse 말고 다른 방법은 없을까? (with Space complexity O(1))
+   - list 의 개수를 센뒤에 마지막 headNode.next 값을 head 의 첫번째 node 로 연결시킨다. 그후 카운트된 리스트 개수만큼 무한히 연결된 list 를 순회하면서 요소가 같은지 체크한다. 
+   -> [1,2,4], [1,2,2,1] 같은 케이스는 통과하지만 [1,1,2,1] 같은 경우 성립하지 못했다. (리스트를 연결한다고 해도 리스트의 역순을 구현할순없었기 때문이다). 
+   -> 실패 
+   
+ - reverse 를 어떻게 하면 extra memory 를 사용하지 않으면서 구현 할수 있을까? 
+   - 첫번째 시도는 리스트 전체를 그냥 reverse 해봤지만 메모리 주소의 next 값이 바뀌면서 참조된 head 의 list 에 영향을 끼쳐 버렸다. 
+   - 두번째 시도는 리스트 중간 까지의 포인트를 찾아서 `중간지점의 노드` 를 `reverse` 한뒤에 원래 headNode 의 값들과 비교를 하는 것이다. 
+     - 중간지점을 찾는데 여러가지 생각해야할 점들이 있었다. 
+     - case 1: 리스트가 비어있을경우 
+     - case 2: 리스트가 홀수인경우 
+     > `curr`, `inspector` two 포인터 를 사용해서 문제를 해결할수 있었다. 
+     > `inspector` 는 각 iteration 마다 `다음 노드` 와 `2번째 다음 노드` 가 nil 인지 확인한다. 그리고 nil 이 아니라면 `inspector` 는 2개의 노드뒤 를 포인팅하게 되고, `curr` 은 다음 노드를 가르키게 된다. 
+     > 만약 리스트 노드의 개수가 홀수 (3개 ~> [1,2,3]) 인경우엔 `curr.next` 인 [3] 노드를 반환하게 된다. 
+     > [3] 을 reverse 해도 reversedList 의 다음 요소가 nil 일때까지만 original head 의 요소와 값을 비교할것이기 때문에 input 이 [1,2,1] 일 경우에도 이 알고리즘은 유효하게 된다.
+     
+![image](https://user-images.githubusercontent.com/36659877/191064360-89ba46c1-c99b-4643-bbbf-66a14bb32992.png)
+
+ 
+ > 결과 
+ 
+ ```swift 
+ 
+ func isPalindrome(_ head: ListNode?) -> Bool {
+
+  let midNode = getLastHalfList(head: head)
+  var reversedMidNode = reverseList(midNode)
+  var curr = head
+  
+  while reversedMidNode != nil {
+    if curr?.val != reversedMidNode?.val {
+      return false
+    }
+    reversedMidNode = reversedMidNode?.next
+    curr = curr?.next
+  }
+
+  return true
+}
+
+ //pass firsthalf of list
+ func getLastHalfList(head: ListNode?) -> ListNode? {
+
+   var curr = head
+   var inspector = head
+
+   while inspector?.next != nil && inspector?.next?.next != nil {
+     inspector = inspector?.next?.next
+     curr = curr?.next
+   }
+
+   return curr?.next
+ }
+
+  func reverseList(_ head: ListNode?) -> ListNode? {
+   //revseredList 는 초기로 Nill 의 주소 값을 가지고 있음.
+   var revseredList: ListNode? = nil
+   //curr 은 head 의 첫번쨰 노드를 가르키고 있음.
+   var curr = head
+   //nextNode 는 head 의 다음 노드를 가르킴.
+   var nextNode = curr?.next
+
+   while curr != nil {
+     //curr 의 다음 요소의 주소 값을 temp 로 지정
+     curr?.next = revseredList
+     revseredList = curr
+     curr = nextNode
+     nextNode = curr?.next
+   }
+
+   return revseredList
+ }
+ 
+ ```
+ 
+ Time Complexity = `O(n)`
+ 
+ Space Complexity = `O(1)`  
+ 
+ 
 </details> 
