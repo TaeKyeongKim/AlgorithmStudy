@@ -1557,3 +1557,56 @@ Space complexity = `O(1)`
  
  
 </details> 
+
+<details> 
+ <summary> 5.0 Linked List Cycle </summary> 
+ 
+ > 고민 
+ - 어떻게 이미 방문한 노드를 체크 해줄수 있을까? 
+ - node 들을 어떻게 비교해서 같은 노드인지 확인할수 있을까? 
+ - 패턴으로 확인해야하나?
+ - 주어진 제약사항을 사용해서 문제를 풀어볼까?
+ 
+ > 해결
+ - 어떻게 이미 방문한 노드를 체크 해줄수 있을까?
+   -> 이미 방문한 노드를 체크하려면 extra memory 를 사용하여 저장해야하는데, space complexity O(1) 의 제약사항을 못 지키게된다. 
+   
+ - 패턴으로 확인해야하나?
+   -> 이것또한 extra memory 필요
+   
+ - 주어진 제약사항을 이용해볼까? 
+   -> 제약사항은 리스트의 길이가 `[0, 1e4]` 였다. 따라서 while loop 에서 노드의 개수를 세어 1e4 이상으로 개수가 세어진다면 true 를 반환하는 스크립트를 짜봤지만... 실패나 다름이 없었다.. 
+   
+ - node 들을 어떻게 비교해서 같은 노드인지 확인할수 있을까? 
+   - Node 가 Equatable 이 아니고, unique 한 id 도 없어서 어떻게 같은 노드인지 확인할까 고민을 하던중 `===` 연산자 를 알게되었다.
+   - `===` 는 `ObjectIdentifier` 를 사용하여 비교되는 대상들이 같은 메모리주소를 참조하고 있는지 확인해준다. 
+   - 같은 노드인지 확인할 방법이 생겼으니, 아래 예시와 같이 만약 순환되고 있는 요소라면 two pointer 을 사용해서 아래와 같이 순환되고있는 리스트인지 확인할수있다. 
+   
+   <img width="1452" alt="image" src="https://user-images.githubusercontent.com/36659877/191170661-40e88dee-5b30-4774-80aa-475dd65f50ee.png">
+
+ > 결과 
+ 
+ ```swift 
+ func hasCycle(_ head: ListNode?) -> Bool {
+  var curr = head
+  var inspector = head?.next
+
+  while inspector != nil {
+    if curr === inspector {
+      return true
+    }
+    curr = curr?.next
+    inspector = inspector?.next?.next
+  }
+  
+  return false
+}
+```
+
+Time Complexity = `O(n)` where n = original length of list 
+
+Space Complexity = `O(1)` 
+ 
+ 
+ 
+</details> 
