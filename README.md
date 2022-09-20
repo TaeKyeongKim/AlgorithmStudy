@@ -1584,7 +1584,7 @@ Space complexity = `O(1)`
    - Node 가 Equatable 이 아니고, unique 한 id 도 없어서 어떻게 같은 노드인지 확인할까 고민을 하던중 `===` 연산자 를 알게되었다.
    - `===` 는 `ObjectIdentifier` 를 사용하여 비교되는 대상들이 같은 메모리주소를 참조하고 있는지 확인해준다. 
    - 같은 노드인지 확인할 방법이 생겼으니, 아래 예시와 같이 만약 순환되고 있는 요소라면 two pointer 을 사용해서 아래와 같이 순환되고있는 리스트인지 확인할수있다. 
-     - curr pointer 는 리스트의 노드를 차례대로 짝수 로 건너뛰는 inspector 의 노드와 비교를 하게된다. 
+     - curr pointer 는 리스트의 노드를 차례대로 짝수 로 건너뛰는 inspector 의 노드와 비교를 하게된다. (inspector 는 리스트개수의 제약에 따라 몇개를 건너뛴 노드를 검사할건지 정해줄수있다)
    
    <img width="1452" alt="image" src="https://user-images.githubusercontent.com/36659877/191170661-40e88dee-5b30-4774-80aa-475dd65f50ee.png">
 
