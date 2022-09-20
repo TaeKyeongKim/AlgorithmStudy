@@ -35,7 +35,7 @@ var array = ["a"]
 
 
 //print(longestCommonPrefix(array))
-let arr = [1,2,1]
+let arr = [2,4]
 let arr2:[Int] = [2,4]
 //현재 head 는 노드의 첫 노드를 가르킨다.
 var head: ListNode? = ListNode(1)
@@ -65,5 +65,8 @@ for items in arr2 {
 
 //let mergedList = mergeTwoLists(list1, list2)
 //print("d")
-print(isPalindrome(list1))
+//print(isPalindrome(list1))
+//list1?.next?.next?.next = list1
+print(hasCycle(list1))
+
 
