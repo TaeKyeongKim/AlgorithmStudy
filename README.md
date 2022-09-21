@@ -1612,7 +1612,10 @@ Time Complexity = `O(n)` where n = original length of list
 Space Complexity = `O(1)` 
 
 </details> 
-
+---- 
+ 
+ ##Trees 
+ 
 <details> 
  <summary> 6.0 Maximum Depth of Binary Tree </summary>
  
