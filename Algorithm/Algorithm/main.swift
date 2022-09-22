@@ -67,6 +67,8 @@ for items in arr2 {
 //print("d")
 //print(isPalindrome(list1))
 //list1?.next?.next?.next = list1
-print(hasCycle(list1))
+//print(hasCycle(list1))
 
-
+//[3,9,20,null,null,15,7]
+let treeNode = TreeNode(3, TreeNode(9), TreeNode(20, TreeNode(15), TreeNode(7)))
+print(maxDepth(treeNode))
