@@ -1618,4 +1618,37 @@ Space Complexity = `O(1)`
 <details> 
  <summary> 1.0 Maximum Depth of Binary Tree </summary>
  
+ > 고민 
+ - `TreeNode` 의 `right`, `left` 중 둘다 nil 이 아닐시에 어떤 방향으로 search 해야하나? 
+ 
+ > 해결 
+ - Recursive 함수를 사용해서 문제를 해결함. 
+ - `BaseCondition` = `right` , `left` 노드가 둘다 Nil 일시 현재 `count` 를 반환. 
+ - 반복해서 함수를 부를때는, `right`, `left` 의 노드의 깊이가 깊은것을 사용하여 `count` 에 더해서 반환해준다. 
+ 
+ > 결과 
+ ```swift 
+ 
+ func maxDepth(_ root: TreeNode?) -> Int {
+  // guard var root = root else {return 0}
+  let curr = root
+  let leftNode = root?.left
+  let rightNode = root?.right
+  var cnt = curr == nil ? 0 : 1
+  
+  //Base case
+  if leftNode == nil && rightNode == nil {
+    return cnt
+  } else {
+    cnt += max(maxDepth(leftNode), maxDepth(rightNode))
+    return cnt
+  }
+}
+
+ ```
+ 
+ Time Complexity = `O(n)`
+ 
+ Space Complexity = `O(1)`
+ 
 </details> 
