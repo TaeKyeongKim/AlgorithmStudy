@@ -1653,3 +1653,54 @@ Space Complexity = `O(1)`
  
 </details> 
 
+
+<details> 
+ <summary> 2.0 Validate Binary Search Tree </summary> 
+ 
+ > 고민 
+ - parent TreeNode 바로 밑에 있는 subtree 와의 BST validation 은 쉽게 구현했지만, tree 가 깊어지고 층이 생기면서 상위에 있는 tree node 와 하위에 있는 node 의 BST validation 을 진행하는 부분에서 어려움을 많이 겪었다.
+ 
+ > 해결 
+ - 1.0 상위 노드의 값과 비교하여 현재 노드가 유효한 BST 인지 확인해주기 위하여 `low`, `high` integer 타입의 범위를 할당했다. 
+ - 2.0 `validateRange(TreeNode, Low, High)` 메서드를 사용하여 subtree node 와 방향에 따른 BST validation Range 값을 지정할수 있도록 해주었다. 
+ - 3.0 밑의 그림과 같이 트리의 오른쪽 노드의 subtree 가 nil 이 될때까지 함수를 recursive 하게 호출하게된다. (오른쪽 subtree 의 유효성 검사를 마친뒤, 왼쪽 subtree 를 진행해주도록 구현했다.)
+ 
+   > `initial value` 
+     > - low & high = 0 
+      
+   > `BaseCase` 
+      > - 현재 노드가 nil 일경우 `true` 반환. (subtree 가 없을시 유요한 BST 임)  
+      > - BST Range 값에 현재 노드의 값이 벋어날경우 `false` 를 반환
+      
+   > `Recursive` 
+      > - 오른쪽 subtree 검사뒤, 왼쪽 subtree 검사진행
+      
+<img width="1192" alt="image" src="https://user-images.githubusercontent.com/36659877/192187615-208cb2b0-26ce-45ff-8a1b-d3fba26b9ed8.png">
+
+
+> 결과 
+
+```swift 
+func isValidBST(_ root: TreeNode?) -> Bool {
+  return validateRange(root, high: nil, low: nil)
+}
+
+
+func validateRange(_ root: TreeNode?, high: Int?, low: Int?) -> Bool {
+  print("Inspecting : \(root?.val), low = \(low), high = \(high)")
+  guard let curr = root else {return true}
+  // The current node's value must be between low and high.
+  if let low = low, curr.val <= low {
+    return false
+  } else if let high = high, curr.val >= high {
+    return false
+  }
+  return validateRange(curr.right, high: high , low: curr.val) && validateRange(curr.left, high: curr.val, low: low)
+}
+```
+
+Time Complexity = `O(n)`
+
+Space Complexity = `O(n)`
+
+</details>
