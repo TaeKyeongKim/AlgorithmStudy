@@ -135,32 +135,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1EB613A7-01C1-456A-9ACC-778CE43FFE6B"
+            uuid = "D9472138-387A-4026-9ABD-217CDE4114A9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Algorithm/isValidBST.swift"
+            filePath = "Algorithm/Symmetric Tree.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "validateRange(_:high:low:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DD983191-D7C6-44DD-A601-F44FD1970742"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Algorithm/isValidBST.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "validateRange(_:high:low:)"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "validateValue(left:right:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

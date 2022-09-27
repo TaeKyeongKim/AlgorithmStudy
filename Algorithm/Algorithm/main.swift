@@ -70,6 +70,7 @@ for items in arr2 {
 //print(hasCycle(list1))
 
 //[3,9,20,null,null,15,7]
-let treeNode = TreeNode(5, TreeNode(4), TreeNode(6, TreeNode(3), TreeNode(7)))
+let treeNode = TreeNode(1, TreeNode(2, TreeNode(3), TreeNode(4)), TreeNode(2, TreeNode(4), TreeNode(3)))
 //print(maxDepth(treeNode))
-print(isValidBST(treeNode))
+//print(isValidBST(treeNode))
+print(isSymmetric(treeNode))
