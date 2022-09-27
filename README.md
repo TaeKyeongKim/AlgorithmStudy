@@ -1704,3 +1704,63 @@ Time Complexity = `O(n)`
 Space Complexity = `O(n)`
 
 </details>
+
+<details> 
+ <summary> 3.0 Symmetric Tree </summary> 
+ 
+ > 고민 
+ - O(1) 의 Space Complexity 로 문제를 풀수 있을까 고민함. 
+ 
+ > 해결 
+ - Recursive 하게 문제를 해결하기위해 직관적으로 문제를 어떻게 해결해야할지 생각해봤다.
+ - 1.0 주어진 root 의 left, right 값은 같아야한다. (아닐시 false)
+ - 2.0 `left.left == right.right && left.right == right.left` 가 성립해야 symmetric 한 것을 알수있다. 
+ 
+ - 위 전재로 아래와 같이 recursive 함수를 설계할수 있었다. 
+ 
+ > Basecase
+ 
+ 1.0 시작 포인트에서 두 노드의 값이 nil 이라면 true 반환 (비교할것이 없기때문에 symmetic 함)
+ 
+ 2.0 시작 포인트에서 두노드의 값이 같지 않다면 false 반환
+ 
+ 3.0 두 노드의 subtnode 값이 같지 않다면 false 반환
+ 
+ > Recursive
+ 
+ `left.left == right.right && left.right == right.left` 를 비교해주기 위하여 두개의 nodeTree 를 매개변수로 받는 `validateValue(left: TreeNode?, right: TreeNode?) -> Bool` 를 작성하여 반복분을 실행. 
+
+ 
+<img width="1402" alt="image" src="https://user-images.githubusercontent.com/36659877/192431352-3cbd2ad2-f143-4c7d-ae5f-d979e024a179.png">
+ 
+ > 해결 
+ 
+ ```swift 
+ func isSymmetric(_ root: TreeNode?) -> Bool {
+ //initial states
+  return validateValue(left: root?.left, right: root?.right)
+ }
+
+ func validateValue(left: TreeNode?, right: TreeNode?) -> Bool {
+  print("A = \(left?.val), B = \(right?.val)")
+  
+  //Basecase1 : 시작 포인트에서 두노드의 값이 nil 이라면 true 반환 (비교할것이 없기때문에 symmetic 함)
+  if (left?.val == nil && right?.val == nil) {return true}
+  //Basecase2 : 시작 포인트에서 두노드의 값이 같지 않다면 false 반환
+  if (left?.val != right?.val) {return false}
+  //Basecase3 : 두 노드의 subtnode 값이 같지 않다면 false 반환
+  print("A.left = \(left?.left?.val), B.right = \(right?.right?.val)")
+  print("A.right = \(left?.right?.val), B.left = \(right?.left?.val)")
+  if (left?.left?.val != right?.right?.val) && (left?.right?.val) != (right?.left?.val) {
+    return false
+  }
+  
+  //Recursive
+  return validateValue(left: left?.left, right: right?.right) && validateValue(left: left?.right, right: right?.left)
+}
+```
+ Time Complexity = `O(n)`
+ 
+ Space Complexity = `O(1)`
+</details> 
+
