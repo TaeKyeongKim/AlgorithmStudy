@@ -1764,3 +1764,50 @@ Space Complexity = `O(n)`
  Space Complexity = `O(1)`
 </details> 
 
+<details> 
+ <summary> 4.0 Binary Tree Level Order Traversal </summary>
+ 
+ > 고민 
+ - 어떻게 다음 level 로 넘어가야하는지 알수 있는지에 대해서 고민을 했다. 
+ 
+ > 해결 
+ - 처음엔 트리의 subtree 갯수를 카운팅하는 로직을 구상하여 다음 level 로 넘어갈지 정해줄까 생각했는데, 코드가 너무 복잡해져서 밑에 방법으로 문제를 해결했다. 
+ - `Queue` 를 사용하여서 첫번째 노드부터 차례대로 Enqueue 를 한뒤에 이중 while 문을 사용하여 문제를 해결했다. 
+   - 1.0 Queue 가 `empty` 될 때까지 outer loop 을 돌린다. 
+   - 2.0 레벨을 표시하기위해 현재 queue 의 노드개수를 `cnt` 에 저장한다. (현재 level 의 노드 개수)
+   - 3.0 innerLoop 에서 첫번째 노드를 에 연결되어 있는 `subNode(left,right)` 를 queue 에 enqueue 해주며 다음 level 의 노드 개수를 업데이트 해준다. 이때 저장된 `cnt` 를 -1 해주며 0 이 될때까지 진행한다. (여기서 `cnt` 는 현재 level 에 있는 node 의 개수를 의미한다.) 
+   
+   > 결과 
+   
+```swift 
+func levelOrder(_ root: TreeNode?) -> [[Int]] {
+        var res: [[Int]] = []
+        var queue: [TreeNode?] = [] 
+       
+        guard let curr = root else {return res}
+        queue.append(curr)
+
+        while (!queue.isEmpty) {
+          var level: [Int] = []
+          var count = queue.count - 1
+          
+            while (count >= 0) {
+                if let node = queue.removeFirst() { 
+                    level.append(node.val)
+                    count -= 1
+                    //enqueue next Nodes 
+                    if let left = node.left {queue.append(left)}
+                    if let right = node.right {queue.append(right)}
+                }
+            }
+            res.append(level)   
+        }
+        return res
+    }
+```
+   Time Complexity = `O(n)` 
+   
+   Space Complexity = `O(n)`
+</details> 
+   
+
