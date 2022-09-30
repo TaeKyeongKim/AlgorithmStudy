@@ -1812,4 +1812,54 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
    
 </details> 
    
+<details> 
+ <summary> 5.0 Convert Sorted Array to Binary Search Tree </summary>
+ 
+ > 고민 
+ - 왼쪽 / 오른쪽 subtree 를 어떤식으로 주어진 배열을 기반으로 형성해야할지 고민. 
+ 
+ > 해결 
+ - 시도 1: Non recursive method
+   - 왼쪽 / 오른쪽 subtree 를 어떤식으로 주어진 배열을 기반으로 형성해야할지에 대한 고민 을 해결하기위해 주어진 배열의 개수 / 2, (중앙 요소) 를 기점으로 왼쪽/오른쪽 subtree 를 구성하려고 했다. 
+   
+   - 과정 : 
+      - 1.0 왼쪽 subTree 를 주어진 배열의 가운데 요소전까지 만들어준다. (왼쪽, 오른쪽 subNode 를 거꾸로 채우며)
+      - 2.0 최상위 노드를 완성된 subtree 위에 지정해주고, right subTree 의 시작점을 만들어주기위해 배열에서 요소를 하나 더빼와 right 에 지정해준다. 
+      - 3.0 오른쪽 SubTree 는 남은 배열이 empty 가 될때까지 배열의 마지막 요소부터 빼와 right subtree 를 구성해준다. (배열은 오름차순이기 때문에 오른쪽 subtree 요소들을 구성해줄땐 마지막 요소부터 빼주었다.) 
+      
+   - 맞닥트린 문제: 
+      - 1.0,3.0 순서에서 적은개수의 배열이 주어질경우에는 queue 를 사용하지 않아도 하나의 줄기로 Node 가 이어지기때문에 됐었지만, 배열이 길어지면 몇번째 node 의 left right 노드를 만들어줄것인지 순서를 정해야하기 때문에 queue 도 사용해야하고 코드가 너무 길어진다.
+      - 2.0 순서에서 배열의 요소가 남아 있는지 항상 체크를 해주어야하기 때문에 코드에 조건문이 너무 많이 생긴다. 
+   
+  
+ - 시도 2: Recursive method
+     - 과정: 
+       - 1.0 최상의 노드를 먼저 주어진 배열의 가운데요소로 생성해준다. 
+       - 2.0 최상위 노드를 기점으로 left, right subtree 를 형성해준다. (recursive 하게 아래 그림 참조) 
+       ![image](https://user-images.githubusercontent.com/36659877/193267279-907a74c7-4883-4ab0-82d5-473e765567bb.png)
+
+ > 결과
+  
+  ```swift
+  func sortedArrayToBST(nums: [Int]) -> TreeNode? {
+  
+    guard !nums.isEmpty else { return nil }
+
+    let mid = nums.count / 2
+
+    let treeNode = TreeNode(nums[mid])
+
+    treeNode.left = sortedArrayToBST(nums: Array(nums[0..<mid]))
+    treeNode.right = sortedArrayToBST(nums: Array(nums[mid + 1..<nums.count]))
+
+  return treeNode
+  }
+ ```
+ 
+ Time Complexity = `O(n)`
+ 
+ Space Complexity = `O(n)` 
+
+</details> 
+
 
