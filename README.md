@@ -1862,4 +1862,86 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
 
 </details> 
 
+----
+## Sorting and Searching 
 
+<details> 
+ <summary> 1.0 Merge Sorted Array </summary> 
+ 
+ > 고민 
+ - 두 배열의 요소하나하나를 비교해서 만약 `nums2` 의 요소값이 더 작다면, `nums1` 을 어떻게 업데이트 해줘야할지 고민을 많이 했다. 
+ 
+ > 해결 
+ - Two pointer 를 사용해서 문제를 해결했다. 
+ - `pointer1` 는 `nums1` 배열의 인덱스를 체크해주고, `pointer2` 는 `nums2` 의 인덱스를 체크하도록 구성했다. 
+ - `While` 문을 사용했는데 `pointer1` 값이 `var pointer1Range = m` 보다 작고, `pointer2` 값이 `n` 값보다 작을시 계속 반복하라는 조건을 주었다.
+ - `nums2` 의 요소값이 더 작다면, `pointer1` 인덱스에 `nums2[pointer2]` 값을 `insert` 해주어 오름순서대로 배치가 되도록 해주었고, 동시에 다음 요소를 가르켜 비교할수 있도록 `pointer2` 의 값을 +1, nums1 의 배열에 insert 되었으니 원래 `pointer1Range` 도 +1 을 해주어 기존에 `num1` 에 있던 요소를 `pointer1` 이 다 가르킬수 있도록 처리해주었다.
+ - 이런식으로 처리를 해줄경우 만약 `nums1` 의 최대값이 `nums2` 의 최대값보다 한참 못미칠경우 아래와 같이 `nums2` 의 모든 요소가 비교되지 않고 while 문이 끝나 버리는 상황이 난다.
+ 
+ <img width="979" alt="image" src="https://user-images.githubusercontent.com/36659877/193405201-dd76a367-651c-4c77-a991-3def4c45d4b3.png">
+ 
+ - `nums2` 의 남은 값들 을 처리 해주고 `insert` 로 비교된 값들을 처리해주었기 때문에 남은 `0` 을 따로 처리해주어야하는 상황이 일어나 버렸다. 
+ - `nums2` 의 남은 값들 을 처리 해주기: 배열의 `replaceSubrange(_ range: Range<Int> ,with: newElements)` 를 아래와 같이 사용해야 했다. 
+ - 또한 이러한 경우는 오직 `pointer2` 가 `n` 까지 도달하지 못했을 경우에만 처리해주어야하기 때문에 while문 이후에 조건문을 따로 주어야했다. 
+   - ex) nums1 = [1], nums2 = [] 일 경우, nums1 이 [] 으로 할당되는 상황이 일어남
+ <img width="668" alt="image" src="https://user-images.githubusercontent.com/36659877/193405406-f9f5c7f4-aaf6-451a-8228-f5698ce83e9a.png">
+
+ - 남은 `0`을 따로 처리: 기존에 주어졌던 배열 각각의 길이 `m+n` 을 사용해서 0이 포함된 `nums1` 을 업데이트 해주어야했다.
+ 
+ > 결과
+ 
+ ```swift
+ func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+        var pointer1 = 0 
+        var pointer2 = 0
+        var pointer1Range = m 
+
+        while (pointer1 < pointer1Range) && (pointer2 < n)  {
+          if nums1[pointer1] > nums2[pointer2] {
+                nums1.insert(nums2[pointer2], at: pointer1)
+                pointer2 += 1
+                pointer1Range += 1
+            } else {
+                pointer1 += 1
+            }                        
+        }
+        
+        if pointer2 != n {
+        nums1.replaceSubrange(pointer1..<nums1.count, with: Array(nums2[pointer2..<nums2.count]))       
+        }
+        
+        nums1 = Array(nums1[0..<m+n])
+    }
+ ```
+ 
+ Time Complexity = `O(n+m)` 
+ 
+ Space Complexity = `O(n)`
+
+ > Three Pointer 를 사용하여 문제해결방법 (무조건 Two Pointer 를 사용해서 문제를 해결하려고 했었는데, 왜 그랬는지 모르겠다...)
+ 
+ - nums1 의 마지막 인덱스부터 nums1, nums2 의 마지막 요소를 비교하여 큰값을 먼저 nums1 의 마지막에 할당시켜주는 방식. 
+ 
+ 
+ <img width="866" alt="image" src="https://user-images.githubusercontent.com/36659877/193406738-2ac60e7e-afc4-42a7-9781-4e99a50f681c.png">
+ 
+ ```swift 
+  func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
+    var updatingPointer = m-m-1
+    var nums1Pointer = m-1
+    var nums2Pointer = n-1
+    
+    while updatingPointer >= 0, nums2Pointer >= 0 { 
+      if nums1Pointer >= 0, nums1[nums1Pointer] > nums2[nums2Pointer] { 
+        nums1[updatingPointer] = nums1[nums1Pointer]
+        nums1Pointer -= 1
+      }else {
+        nums1[updatingPointer] = nums2[nums2Pointer]
+        nums2Pointer -= 1
+      }
+      updatingPointer -= 1
+    }
+  
+  }
+ ```
+</details> 
