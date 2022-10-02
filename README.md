@@ -1945,3 +1945,53 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
   }
  ```
 </details> 
+
+
+<details> 
+ <summary> 2.0 First Bad Version </summary>
+
+ > 고민
+ - 문제를 이해하는데 어려움을 겪었다. input 이 5와, 4 일때, 1...5 까지의 integer 를 순회하며 첫번째로 `isBad(n) = true, (4 in this ex)` 인 숫자를 리턴하는 문제였다. 
+ - 어떤식으로 순회하여 문제를 해결해야하는지 고민했다. 
+ 
+ > 해결 
+ - 첫번째 해결법으로는 요소한개한개를 검사하여 처음으로 `True` 가 나오는 값을 리턴해주었다. (하지만 숫자가 커지기 시작하면서 time limit 에 걸리고 만다)
+ - 두번쨰 해결 방안으로는 이진탐색을 검색하여 문제를 풀어보려고했으나, recursion 을 사용해서 접근하려니 bad version 도 체크해주는과정과, 이진 검색 range 도 설정해 주는과정에서 머리가 멈춰버리고 말았다. 
+ - 결국 답을 보고 문제를 해결했는데, 굉장히 간단한 방법으로 문제를 아래와 같이 해결할수 있었다. 
+ - Left, Right, Mid pointer 를 사용하는데 `isBad(Mid)` 의 값이 True, 일때와 False 일때 Range(left, right) 를 재설정해주어 left 가 right pointer 보다 -1 적을때까지 while 문을 돌린다. 
+ 
+ - #Scenario 1: mid pointer 의 요소가 불량인 버전이 아닐때
+  - 주어진 n = 6 일때, [1,2,3,4,5,6] 요소를 검사하게되는데 `isBad(Mid) = false` 일때 생각해보자
+  <img width="686" alt="image" src="https://user-images.githubusercontent.com/36659877/193440685-1ec52c3e-c480-425c-998a-71a2def942e4.png">
+ 
+ - 1 에서 중간지점까지 불량이 없다는 뜻은 `중간지점의 + 1 요소`부터 불량인지 체크를 해주어야한다는 말이된다. 따라서 이진탐색 의 Range 를 [mid+1, right] 로 업데이트 해준다. 
+  
+ - #Scenario 1: mid pointer 의 요소가 불량인 버전일때 
+  - 주어진 n = 6 일때, [1,2,3,4,5,6] 요소를 검사하게되는데 `isBad(Mid) = True` 일때 생각해보자
+  <img width="649" alt="image" src="https://user-images.githubusercontent.com/36659877/193440776-bbe6f9c0-21b6-4ccf-8471-d959918e5e8b.png">
+  
+  - 중간 지점에서 불량이 나왔다는뜻은 그 이전에 나왔을수도있다는 뜻이된다. 따라서 새로운 이진탐색 의 range 를 [left, mid] 로 설정해준다. (불량 버전인 mid 를 포함하게 되는데, 이는 left pointer 가 +1 씩 왼쪽에서 오른쪽으로 탐색범위를 좁혀오기때문에 마지막으로 left pointer 가 right pointer 를 가르키게되면서 불량버전을 찾아낼수있게된다)
+  
+  
+  > 결과 
+  ```swift 
+    func firstBadVersion(_ n: Int) -> Int {
+      var left = 1
+      var right = n
+      while left < right {
+        var mid = left + (right - left)/2 // n 값 이커지면 (right+left)/2 는 overflow 되기때문에, (right-left)/2 로 중간지점의 인덱스 계산뒤, 기준점 //left 에 더해주도록 계산한다.
+        if isBadVersion(mid) {
+          var right = mid
+        }else {
+          var left = mid + 1
+        }
+      }
+      return left 
+    }
+  ```
+
+  Time Complexity = `O(logn)`
+  
+  Space Complexity = `O(1)`
+
+</details>
