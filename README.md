@@ -1979,7 +1979,7 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
       var left = 1
       var right = n
       while left < right {
-        var mid = left + (right - left)/2 // n 값 이커지면 (right+left)/2 는 overflow 되기때문에, (right-left)/2 로 중간지점의 인덱스 계산뒤, 기준점 //left 에 더해주도록 계산한다.
+        var mid = left + (right - left)/2 // n 값 이커지면 (right+left)/2 는 overflow 되기때문에, (right-left)/2 로 중간지점의 인덱스 계산뒤, 기준점 left 에 더해주도록 계산한다.
         if isBadVersion(mid) {
           var right = mid
         }else {
@@ -1995,3 +1995,71 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
   Space Complexity = `O(1)`
 
 </details>
+ 
+---
+ 
+ ## Dynamic Programming 
+ 
+ - DP 는 `큰 문제` 를 `부분 문제` 로 나누고, `부분문제` 의 정답으로 `큰 문제` 의 해답을 찾아가는 알고리즘 설계법 이다. 
+ - 이렇게 보면 `분할 정복` 문제와 비슷하다고 느끼겠지만, 해를 구하기 위해 쪼갠 `부분문제` 의 특성이 다르다. 
+ - 분할 정복과 비교했을 때 동적 프로그래밍의 도드라지는 특성은 작게 쪼개진 `부분 문제` 가 중복돼서 나타난다는 것이다.
+ - 분할 정복은 큰 문제 가 `유니크한 부분 문제` 로 나뉘지만 `동적 프로그래밍` 은 `부분 문제` 가 반복적으로 등장한다.
+ - `큰 문제` 의 해는 `부분 문제` 의 조합으로 찾을 수 있으며 `문제의 해는 동일한 연산으로 수행` 되어야 한다.
+ - [참조](https://kangworld.tistory.com/48)
+ 
+ <details>
+  <summary> 1.0 Climbing Stairs </summary>
+  
+  > 고민 
+  - 어떤 반복적인 부분문제가 있는지 파악하기
+  - 어떤 `부분 문제` 의 조합을 사용해야하나?
+
+  > 해결
+  - 어떤 반복적인 부분문제가 있는지 파악하기 & 어떤 조합으로 이루어져있나?
+     - 계단을 오를때 1,혹은 2 칸씩 오를수 있다고 주어졌고, `n` 번째 계단을 올라 정상까지 도달하는 방법의 수를 구하는 것이였다.
+     - 2개의 계단을 오르는 방법은 1칸씩x2 와 2칸을 동시에 오르는법: 2가지이다.
+     - 3개의 계단을 오르는 방법은 1번째 계단에서부터 2칸을 오르는방법, 2번째 계단에서 1칸을 오르는 방법: 3가지이다.
+     - 4개의 계단을 오르는 방법은 (2번째계단까지 오르는 방법 + 2칸을 한번에 가는법), (3번째 계단까지 오르는 방법 + 1칸을 한번에 가는법) : 5가지 이다.
+     - `n번째` 계단을 오르는 방법은 `(An-2) + (An-1)` 가지 이다.
+  - 위 점화식은 `피보나치 수열` 과 같다. 
+  
+  > 결과 
+  
+  > 시도 1 (TimeLimit Exceeds)
+  
+  - `문제의 해는 동일한 연산으로 수행` 되기때문에 아래와 같이 Recursive 하게 문제를 풀면 중복된 계산을 계속 반복하기 때문에 시간이 오래걸린다.
+  
+  ```swift
+  func climbStairs(_ n: Int) -> Int {
+        if n == 1 {return 1}
+        if n == 2 {return 2}
+        return climbStairs(n-1) + climbStairs(n-2)
+  }
+  ```
+  
+  > 시도 2 (Memoization) 
+  
+  - 중복된 계산을 피하고자 이전에 구한 "부문 문제"의 해를 메모리에 저장해두는 방법으로 풀어봤다.
+  
+  ```swift
+  func climbStairs(_ n: Int) -> Int {
+       var steps: [Int] = [0,1,2] 
+     
+       if n > 2 {
+          for i in 3...n{
+             steps.append(steps[i-1] + steps[i-2]) 
+          }
+       }
+    return steps[n]
+  }
+  ```
+  
+  Time Complexity = `O(n)`
+  
+  Space Complextiy = `O(n)`
+  
+  
+ </details>
+ 
+ 
+ 
