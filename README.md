@@ -2061,5 +2061,48 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
   
  </details>
  
+ <details> 
+  <summary> 2.0 Best Time to Buy and Sell Stock </summary>
+DP means "having the answer of smaller sub-problems, so we can use them later". This problem is doing exactly that hence DP
+  
+  > 고민
+  - 배열의 값을 그래프로 그려보면 peak 가 생기고 valley 가 생기는데, valley 에서 peak 으로 올라가는 값이 profit 이 된다는 생각을 했다. 
+  - 배열을 순회하면서 valley 에서 peak 으로 올라가는 값중 가장 큰수를 리턴 하면 될것이라는 생각을 했지만, [4,2,7,3,9] 인경우 [2,7] = 5, [3,9] = 6 이지만, [2,9] = 7 의 조합도 가능하기 때문에 다른 접근 방법으로 문제를 풀어야했다. 
+  - `dp` 문제로 어떻게 접근해야하는지 많이 고민했지만 도저히 다른 방법이 떠오르지 않아 답을 보고 문제를 풀었다.
+  
+  > 해결 
+  - DP 는 작은 문제의 답을 구하여 큰 문제를 푸는 방법인데 아래와같은 접근 방식으로 문제를 해결했다. 
+  - 배열을 순회 해가면서 이전날보다 작은 값을 `currentStock` 에 저장한다. 
+  - 배열을 순회 하며 현재 스톡값과 저장된 `currentStock` 을 빼주어 `만약 오늘 스톡을 판다면 얼마의 profit 이 생기는지 = profitInspector` 에 저장한다. 
+  - `maxiumProfit` 이라는 값을 0 으로 초기화한뒤, 만약 `profitInspector` 보다 값이 작다면 `maxiumProfit` 을 현재의 profitInspector 으로 업데이트 해준다. 
+  - 이 DP 문제는 하루하루 스톡을 팔았을 경우의 값을 계산하여 현재 `maxiumProfit` 과 비교하여 업데이트 해주는 작은 문제의 답을 해결해서 `가장 높은 profit` 을 구하는 구하는 문제였다.
+  
+  
+  > 결과 
+  
+  ```swift 
+  func maxProfit(_ prices: [Int]) -> Int {
+     var currentStock = Int.max 
+     var maxProfit = 0
+     var profitInspector = 0 
+   
+     for i in 0..<prices.count {
+       if prices[i] < currentStock {
+         currentStock = prices[i]
+       }
+       profitInspector = prices[i] - currentStock
+       if maxProfit < profitInspector {
+         maxProfit = profitInspector
+       }
+     }
+     return maxProfit
+  }
+  ```
+  
+  Time complexity = `O(n)`
+                                     
+  Space complexity = `O(1)`
+
+ </details>
  
  
