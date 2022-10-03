@@ -2063,7 +2063,6 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
  
  <details> 
   <summary> 2.0 Best Time to Buy and Sell Stock </summary>
-DP means "having the answer of smaller sub-problems, so we can use them later". This problem is doing exactly that hence DP
   
   > 고민
   - 배열의 값을 그래프로 그려보면 peak 가 생기고 valley 가 생기는데, valley 에서 peak 으로 올라가는 값이 profit 이 된다는 생각을 했다. 
