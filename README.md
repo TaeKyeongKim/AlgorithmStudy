@@ -2104,4 +2104,73 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
 
  </details>
  
+ <details>
+   <summary> 3.0 Maximum Subarray </summary>
+   
+   > 고민 
+   - 어떤 `Subproblem` 으로 나눌수있을까?
+   - `O(n)` 안에 풀기
+   
+   > 해결 
+   - 이문제를 해결하기 위한 생각의 흐름은 "어떤 `Subproblem` 으로 나눌수있을까?" 에서 부터 시작되었다. 
+   - 1.0 현재 내가 가지고 있는 `SubArray` 의 합이 다음 subarray 의 합보다 작은지 확인하다보면 문제가 해결되지않을까?
+   - 2.0 `SubArray` 의 크기는 `0~nums.count` 이다. 
+   - 3.0 어떻게 개수를 지정해줄수 있을까? 
+       - 어떻게 optimal 한 개수인지 알수있고, 그 position 은 어떻게 알까? 
+       
+   -> 처음 1개와 그 다음수를 비교해서 다음수가 더클때 position 을 그 다음 요소로 옮기면되지 않을까? 
+   -> 처음 1개가 아니라, 시작이되는 `SubArray` 부터의 `Sum` 을 그 다음요소랑 비교하면 되지 않을까? 
+   -> 만약 그 다음 요소가 이전의 `sum` 보다 크면 새로운 기준이되고, 그 기준부터 `Sum` 을 구하면되지 않을까? 
+   -> 문제의 제목은 마치 SubArray 를 찾는 것 같은데, 함수는 `Sum: Int` 을 반환하고 있다. 그럼 `Sum` 을 저장해 두었다가 주어진 배열에서 나올수 있는 최대 수를 구하면되지 않나? 
+   
+   - 문제는 아래와 같이 2가지의 큰 문제로 나뉜다. 
+   
+   - Scenario 1 : `Σ nums[StartingPointer...Counter]` > `nums[Counter+1]`
+      - `StartPointer` 는 어떤요소부터 더해줄것인지에 대한 기준점이 된다. 따라서 `Counter` 가 증가할때마다 `StartPointer` 가 같을시 `Σ nums[StartingPointer...Counter]` 값과 `nums[Counter+1]` 을 비교하여 `nums[Counter+1]` 가 이전 Sum 보다 작을시, 더해주어 `maxSum` 과 값을 비교한다. 
+   이때 `maxSum` 보다 값이 크면 `maxSum` 을 업데이트 해주게 된다. 
+   
+   <img width="1158" alt="image" src="https://user-images.githubusercontent.com/36659877/193760434-64cea8e3-3206-47a2-b4e5-a199156db930.png">
+   
+   - Scenario 2 :`Σ nums[StartingPointer...Counter]` < `nums[Counter+1]`
+      - 이전의 Sum 이 다음 요소보다 `작다면`, 다음 값을 새로운 기준으로 해줘야할지 생각해봐야한다. 
+      - 만일, `이전의 합과 다음요소의 합` > `다음요소의 값` 일때, 기준(StartPointer)을 업데이트 해줄필요가 없게된다.
+      - 마지막으로 `이전의 합과 다음요소의 합` 과 현재 기록되어있는 `maxSum` 을 비교해서 업데이트 해주면 된다. 
+      
+<img width="1118" alt="image" src="https://user-images.githubusercontent.com/36659877/193763548-5b2b43a0-f31f-4c6c-b8b2-54c853da69c7.png">
+
+
+   - 처음엔 `이전의 요소들의 합` 을 구할때 `reduce` 고차함수를 사용했으나, `O(n^2)` 시간 복잡도 가 형성되어 패스를 하지 못했다. 
+   - 따라서 `curr` 이란 변수를 이용하여 값을 계속 더해주는식으로 문제를 해결했다. 
+   
+   ```swift 
+    func maxSubArray(_ nums: [Int]) -> Int {
+  
+  var cnt = 0
+  var startPointer = 0
+  var maxSum = nums[cnt]
+  var curr = nums[cnt]
+  
+  while cnt < nums.count-1 {
+    //만약 다음값이 더크다면 sp 업데이트
+    if curr < (nums[cnt+1]) {
+      startPointer = cnt+1
+       curr = max(curr+nums[startPointer],nums[startPointer])
+    } else {
+      curr += nums[cnt+1]
+    }
+    
+    if curr > maxSum {
+      maxSum = curr
+    }
+    cnt += 1
+  }
+  
+  return maxSum
+  }
+  ```
+  
+  - Time complexity: `O(n)`
  
+  - Space complexity: `O(1)`
+  
+ </details>
