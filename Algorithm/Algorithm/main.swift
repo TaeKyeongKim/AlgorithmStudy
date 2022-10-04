@@ -75,4 +75,7 @@ for items in arr2 {
 //print(isValidBST(treeNode))
 //print(isSymmetric(treeNode))
 
-sortedArrayToBST(nums: Array([-10,-3,0,5,9]))
+//sortedArrayToBST(nums: Array([-10,-3,0,5,9]))
+
+//print(climbStairs(4))
+print(maxSubArray([-3,-2,-1]))
