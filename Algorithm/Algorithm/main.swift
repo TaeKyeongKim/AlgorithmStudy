@@ -78,4 +78,5 @@ for items in arr2 {
 //sortedArrayToBST(nums: Array([-10,-3,0,5,9]))
 
 //print(climbStairs(4))
-print(maxSubArray([-3,-2,-1]))
+//print(maxSubArray([-3,-2,-1]))
+print(rob([6,3,10,8,2,10,3,5,10,5,3]))

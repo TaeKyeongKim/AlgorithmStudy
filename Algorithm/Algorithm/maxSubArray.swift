@@ -18,7 +18,7 @@ func maxSubArray(_ nums: [Int]) -> Int {
     //만약 다음값이 더크다면, sp 업데이트
     if curr < (nums[cnt+1]) {
       startPointer = cnt+1
-      curr = curr + nums[startPointer] < nums[startPointer] ? nums[startPointer] : curr + nums[startPointer]
+      curr = max(curr+nums[startPointer],nums[startPointer])
     } else {
       curr += nums[cnt+1]
     }
