@@ -2177,3 +2177,42 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
   - Space complexity: `O(1)`
   
  </details>
+ 
+ <details> 
+   <summary> 4.0 House Robber <summary>
+ 
+   > 고민 
+   - 이문제는 도저히 풀수가 없어서 [여기를](https://www.youtube.com/watch?v=73r3KWiEvyk) 참조해서 문제를 풀었다. 
+   
+   > 해결 
+   - 엄청나게 고민했는데 생각보다 간단히 아래와 같이 풀수 있었다. 
+   - rob1 = 0 , rob2 = 0 이라는 초기값을 할당한다. 
+   - 배열을 순회하며, `max(새로운 요소+rob1, rob2)` 값을 찾아내어 만약 `새로운 요소+rob1` (새롭게 터는 집) 이 이전값 `rob2` 보다 크다면 `temp` 값을 업데이트 해준다. 
+   - rob1 과 rob2 의 값을 바꾼다. 
+   - 이를 마지막 요소까지 반복.
+   - 최종적으로 rob2 에 가장 많이 훔칠수 있는양의 값이 저장된다. 
+   
+   > 결과 
+   
+   ```swift 
+   func rob(_ nums:[Int]) -> Int{ 
+     var rob1 = 0 
+     var rob2 = 0 
+     
+      for num in nums { 
+        var temp = max(rob1 + num, rob2) 
+        rob1 = rob2 
+        rob2 = temp
+      }
+      
+     return rob2
+   }
+   ```
+   
+   Time Complexity = `O(n)`
+   
+   Space Complexity = `O(1)`
+ </details>
+ 
+ 
+ 
