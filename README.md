@@ -2179,7 +2179,7 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
  </details>
  
  <details> 
-   <summary> 4.0 House Robber <summary>
+   <summary> 4.0 House Robber </summary>
  
    > 고민 
    - 이문제는 도저히 풀수가 없어서 [여기를](https://www.youtube.com/watch?v=73r3KWiEvyk) 참조해서 문제를 풀었다. 
