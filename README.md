@@ -2219,7 +2219,7 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
  ## Design
  
  <details> 
-   <summary> 1.0 Min Stack </summary> 
+   <summary> 1.0 Shuffle an Array </summary> 
    
    > 고민 
    - `shuffle` 을 어떻게 구현할까
@@ -2243,3 +2243,7 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
    ```
  </details>
  
+ <details> 
+   <summary> 2.0 Min Stack </summary> 
+  
+  <details>
