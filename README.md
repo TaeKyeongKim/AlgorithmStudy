@@ -2348,3 +2348,55 @@ Time Complexity = `O(n)`
 Space Complexity = `O(n)`
 
 </details>
+
+<details> 
+ <summary> 2.0 Count primes </summary> 
+ 
+ > 고민 
+  - 소수 판별법 
+  - [에라토스테네스의 체 구현하기](https://loosie.tistory.com/267)
+
+ > 해결 
+ - 소수의 판별은 2,3,5,7 의 수로 나누어 떨어지지 않는 수 이다.
+ - 에라토스테네스의 체 는 `2,3,5,7` 의 배수 를 제외한 하면 해당수까지의 소수가 몇개 있는지 알수 있다. 
+ 
+ > 결과 
+ 
+ ```swift 
+ func countPrimes(_ n: Int) -> Int {
+   var divisor = 2
+   var cnt = 0 
+   
+   var primes = Array(repeating: true, count: n)
+
+   if n < 2 {return cnt} 
+           
+     //Outer loop to go through 2,5,7,9..      
+     while divisor * divisor < n { 
+        if primes[divisor] == true { 
+ 
+           var i = divisor
+ 
+           while i*divisor < n {
+             primes[i*divisor] == false
+             i += 1                 
+           }
+            
+         }
+        
+        divisor += 1
+     } 
+     
+  for i in 2..<n {
+    cnt += primes[i] == true ? 1 : 0
+  }
+  
+  return cnt       
+ } 
+ ```
+ 
+ Time Complexity = `O(n)` (원래 에라토스테네스의 체 알고리즘은 `O(log(logn))` 의 시간 복잡도를 가지고 있음.
+   
+ Space Complexity = `O(n)`
+
+</details>
