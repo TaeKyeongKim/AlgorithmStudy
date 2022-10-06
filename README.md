@@ -2212,6 +2212,7 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
    Time Complexity = `O(n)`
    
    Space Complexity = `O(1)`
+  
  </details>
  
  ----
@@ -2241,9 +2242,56 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
      return copy
    }
    ```
+  Time Complexity = `O(n)`
+   
+  Space Complexity = `O(1)`
+  
+  
  </details>
  
  <details> 
    <summary> 2.0 Min Stack </summary> 
   
+  > 고민 
+  - 어떻게 `minium` 값을 유지할수 있을까? 
+  
+  > 해결 
+  - `[(element,min)]` 을 이용하여 현재 `push` 될때의 Minimum 값을 같이 저장한다. 
+  
+  > 결과 
+  
+  ```swift 
+  class MinStack {
+  
+     private var stack: [(element:Int, min:Int)] = []
+
+     init() {}
+
+     func push(_ val: Int) {
+         if stack.isEmpty { 
+           stack.append((val,val)) //첫번째 min은 val 가됨.
+         }else{
+           stack.append((val,min(val,getMin())))    
+         }
+     }
+
+     func pop() {
+       _ = stack.popLast()
+     }
+
+     func top() -> Int {
+       return stack.last!.element
+     }
+
+     func getMin() -> Int {
+       return stack.last!.min
+     }
+    
+   }
+  
+  ```
+  
+  Time Complexity = `O(n)`
+   
+  Space Complexity = `O(1)`
   <details>
