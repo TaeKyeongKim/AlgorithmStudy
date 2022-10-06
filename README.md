@@ -2214,5 +2214,32 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
    Space Complexity = `O(1)`
  </details>
  
+ ----
  
+ ## Design
+ 
+ <details> 
+   <summary> 1.0 Min Stack </summary> 
+   
+   > 고민 
+   - `shuffle` 을 어떻게 구현할까
+   
+   > 해결 
+   - `Stride` 를 사용해 아래와 같이 문제를 해결 
+   
+   > 결과 
+   
+   ```swift 
+   func shuffled(_ nums:[Int] ) -> [Int] {
+     var copy = nums
+     for i in stride(from: nums.count-1, through: 1, by: -1){
+       let index = Int.random(in: 0...i)
+       if index != i {
+         copy.swapAt(i, index)
+       }
+     }
+     return copy
+   }
+   ```
+ </details>
  
