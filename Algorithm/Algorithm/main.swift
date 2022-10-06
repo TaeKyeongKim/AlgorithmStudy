@@ -79,4 +79,18 @@ for items in arr2 {
 
 //print(climbStairs(4))
 //print(maxSubArray([-3,-2,-1]))
-print(rob([6,3,10,8,2,10,3,5,10,5,3]))
+//print(shuffled([6,3,10,8,2,10,3,5,10,5,3]))
+
+//["MinStack","push","push","push","getMin","pop","top","getMin"]
+//[[],[-2],[0],[-3],[],[],[],[]]
+//var minStack = MinStack()
+//print(minStack.push(-2))
+//print(minStack.push(0))
+//print(minStack.push(-3))
+//print(minStack.getMin())
+//print(minStack.pop())
+//print(minStack.top())
+//print(minStack.getMin())
+
+//print(fizzBuzz(15))
+print(countPrimes(10))
