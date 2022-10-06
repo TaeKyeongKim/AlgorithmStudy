@@ -2378,7 +2378,7 @@ Space Complexity = `O(n)`
            var i = divisor
  
            while i*divisor < n {
-             primes[i*divisor] == false
+             primes[i*divisor] = false
              i += 1                 
            }
             
