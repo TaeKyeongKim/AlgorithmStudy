@@ -2294,4 +2294,57 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
   Time Complexity = `O(n)`
    
   Space Complexity = `O(1)`
-  <details>
+  </details>
+
+---- 
+
+## Math 
+
+<details>
+  <summary> 1.0 FizzBuzz </summary> 
+  
+  > 고민 
+  - 3,5 의 공배수와, 각각의 배수일 때 만들어야하는 String 조합이 다른것을 어떤방법으로 표현해줄까? 
+  
+  > 해결 
+  - `%` mod operator 를 사용해서 문제해결 
+  - `Enum associated type` 을 사용해서 팩토리를 만들고 문제를 해결 
+  
+  > 결과 
+  
+  ```swift 
+  enum FizzBuzz {
+  case compute (Int)
+  
+  var string:String {
+    switch self {
+    case .compute(let num):
+      if num % 3 == 0 && num % 5 == 0 {
+        return "FizzBuzz"
+      }else if num % 5 == 0 {
+        return "Buzz"
+      }else if num % 3 == 0 {
+        return "Fizz"
+      }else{
+        return "\(num)"
+      }
+    }
+  }
+}
+
+func fizzBuzz(_ n: Int) -> [String] {
+  
+  var res: [String] = []
+  for i in 1...n {
+    let fizzbuzz: FizzBuzz = .compute(i)
+    res.append(fizzbuzz.string)
+  }
+  return res
+}
+```
+
+Time Complexity = `O(n)`
+   
+Space Complexity = `O(n)`
+
+</details>
