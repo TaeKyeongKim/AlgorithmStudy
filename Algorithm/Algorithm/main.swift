@@ -93,4 +93,5 @@ for items in arr2 {
 //print(minStack.getMin())
 
 //print(fizzBuzz(15))
-print(countPrimes(10))
+//print(countPrimes(10))
+print(isPowerOfThree(6))
