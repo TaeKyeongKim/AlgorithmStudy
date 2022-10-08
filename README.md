@@ -2401,3 +2401,42 @@ Space Complexity = `O(n)`
 
 
 </details>
+
+
+<details> 
+ <summary> 3.0 Power of Three </summary> 
+ 
+ > Intuition
+<!-- Describe your first thoughts on how to solve this problem. -->
+We can get the logarithms form with base of 3 by the following equation. 
+
+![image.png](https://assets.leetcode.com/users/images/f8ff1393-1fda-4b43-adad-1c90ad271209_1665232671.988392.png)
+
+Then I would compute power of that exponent on base 3 to see if the that is equal to n
+
+![image.png](https://assets.leetcode.com/users/images/ae049365-f93f-421e-b698-9c73409e1024_1665232791.5429022.png)
+
+In short,
+log3(n) = log10(n)/log10(3), 
+Check if n == 3^log3(n)
+
+> Code
+```
+class Solution {
+    func isPowerOfThree(_ n: Int) -> Bool {
+      if n <= 0 {return false}
+      var r = (log(Double(n))/log(3.0)).rounded()
+      return n == Int(pow(3, r))
+    }
+}
+```
+
+> Complexity
+- Time complexity: `O(1)`
+<!-- Add your time complexity here, e.g. $$O(n)$$ -->
+
+- Space complexity: `O(1)`
+<!-- Add your space complexity here, e.g. $$O(n)$$ -->
+
+</details> 
+
