@@ -2622,4 +2622,49 @@ class Solution {
   
  </details>
  
+ <details> 
+  <summary> 3.0 Reverse Bits </summary> 
+
+> 고민 
+- Bit-wise operator 를 사용하여 문제를 해결 하기
+
+> 해결 
+
+- Bitwise Left and Right Shift Operators
+The bitwise left shift operator (<<) and bitwise right shift operator (>>) move all bits in a number to the left or the right by a certain number of places, according to the rules defined below.
+
+- Bitwise left and right shifts have the effect of multiplying or dividing an integer by a factor of two. Shifting an integer’s bits to the left by one position doubles its value, whereas shifting it to the right by one position halves its value.
+
+
+- 32 bit unsigned integer 의 bit 을 뒤집어 버려야함. 
+- 32bit 마지막 숫자가 1 인지 0 인지 확인 한뒤에 
+- 1 일시에 `res` 값에 +1 해줌. 
+- `res` 값을 `shift operator` 를 사용하여 왼쪽으로 한칸씩 총 32번 옮겨야함.
+- unsigned 니까 31 bit 까지 위 1일시에 +1 해주는 조건문을 적용시킴
+
+> 결과 
+
+```swift 
+func reverseBits(_ n: Int) -> Int {
+  
+  var n = n
+  var result = 0
+  //주어진 값 마지막부터 1 인지 0인지 확인하고, 1이면 result 에 1bit 를 마지막 자리수에 추가 해줌.
+  //이 과정을 n 이 0 이 될때까지 진행.
+  for i in 0..<32 {
+    result += (n & 1) // (n 의 마지막 자리가 0 인지 1 인지 알기 위해서 & operator 를 사용)
+    n >>= 1 // n 을 / 2 해줌
+    if i < 31 { //31번 해주는데.... unsigned 라 그런듯.
+      result <<= 1 // 오른쪽 shift 해줌 (result 값 * 2).
+    }
+  }
+  return result
+}
+```
+
+- Time complexity: `O(1)`
+  
+- Space complexity: `O(1)`
+
+ </details>
  
