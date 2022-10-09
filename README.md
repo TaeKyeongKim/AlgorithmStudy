@@ -2702,3 +2702,38 @@ func reverseBits(_ n: Int) -> Int {
 
  </details>
  
+ <details> 
+   <summary> 4.0 Pascal's Triangle </summary> 
+   
+   > 고민 
+   - Brute Force 방법 이외에 구현할수 있는 방법은 없을까? 
+   
+   > 해결 
+   - 시도1 : Brute Force
+      - 2중 for loop 을 돌면서 레벨 하나씩 채워줌 
+      
+      ```swift 
+      func generate(_ numRows: Int) -> [[Int]] {
+
+         var res: [[Int]] = []
+
+         for row in 0..<numRows {
+           var rows: [Int] = []
+           for i in 0...row {
+             if i == 0 || i == row {
+               rows.append(1)
+             }else {
+               rows.append(res[row-1][i-1] + res[row-1][i])
+             }
+           }
+           res.append(rows)
+         }
+         return res
+       }
+     ```
+    
+   - Time complexity: `O(n^2)`
+  
+   - Space complexity: `O(n)`
+
+ </details> 
