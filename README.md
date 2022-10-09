@@ -2586,6 +2586,9 @@ class Solution {
 </details>
  
  ---- 
+ 
+ ##Others
+ 
  <details> 
   <summary> 1.0 Number of 1 Bits </summary>
   
