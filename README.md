@@ -2584,3 +2584,39 @@ class Solution {
 - Space complexity: `O(1)`
 
 </details>
+ 
+ ---- 
+ <details> 
+  <summary> 1.0 Number of 1 Bits </summary>
+  
+  > 고민 
+  - 주어진 input 의 형태가 binary 로 주어지는건가?
+  - 문제를 읽었을때는 binary 형태로 주어지는 줄알았는데, decimal 형태의 Int 값으로 값이 들어옴.
+  
+  > 해결 
+  - 주어진 decimal 값을 binary 형태로 바꾸는 과정에 나머지 값이 1일때 cnt+1 을 해주어 문제해결.
+  
+  > 결과 
+  
+  ```swift 
+  func hammingWeight(_ n: Int) -> Int {
+    var cnt = 0
+    var val = n
+  
+    while val > 0 {
+      if val % 2 == 1 {
+        cnt += 1
+      }
+      val = val / 2
+    }
+  return cnt
+  }
+  ```
+  
+  - Time complexity: `O(n)`
+  
+  - Space complexity: `O(1)`
+  
+ </details>
+ 
+ 
