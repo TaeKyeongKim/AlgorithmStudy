@@ -2440,3 +2440,147 @@ class Solution {
 
 </details> 
 
+<details> 
+ <summary> 4.0 Romans to Integer </summary> 
+  
+  > 고민 
+  - 어떤 단위로 단어를 끊어서 무슨값인지 표현해줄까?
+  - 단어를 끊어서 판별하는 방법외 다른 방법이 있을까?
+   
+  > 해결 
+  - 시도 1
+     - Given `s = MCMXCIV` 
+     - M, CM, MC, MC, XC, CI, IV 대로 2개씩 끊어서 해당 문자에 등록된 값이 있다면 아래와 같이 처리. 
+     - C -> CM 이 있다면, C 에서 100 을 더해주고, CM 에서 900 - 100 을 해준 800 을 더해주어 1000-100 과 같은 값으로 처리되도록 구현. 
+     - 이때 Swift string 은 subscript 을 사용할때 `String.index` 를 사용해야하기 때문에, 단어 하나를 `word` 라는 변수에 더해주고 현재 끝의 인덱스와 끝-1 인덱스를 따로 생성해준다. 
+     - 또한 `enum` 으로 각 case 마다 할당되는 값을 지정해준다.
+     
+```swift 
+     enum romans: String {
+        case I
+        case V
+        case X
+        case L
+        case C
+        case D
+        case M
+        case IV
+        case XL
+        case CD
+        case IX
+        case XC
+        case CM
+
+        var value: Int {
+          switch self {
+          case .I:
+            return 1
+          case .V:
+            return 5
+          case .X:
+            return 10
+          case .L:
+            return 50
+          case .C:
+            return 100
+          case .D:
+            return 500
+          case .M:
+            return 1000
+          case .IV:
+          return 3
+          case .XL:
+            return 30
+          case .CD:
+            return 300
+          case .IX:
+            return 8
+          case .XC:
+            return 80
+          case .CM:
+            return 800
+          }
+          return 0
+        }
+      }
+
+      func romanToInt(_ s: String) -> Int {
+        var word: String = ""
+        var res = 0
+
+        for string in s {
+        word += String(string)
+          if word.count > 1 {
+            let endIndex = word.index(before: word.endIndex)
+            let lastWordIndex = word.index(endIndex, offsetBy: -1)
+            let lastTwoWords = String(word[lastWordIndex...endIndex]) //Retrieve lastTwoWords
+            if let value = romans(rawValue: String(lastTwoWords))?.value {
+              res += value
+              continue
+            }
+          }
+          res += romans(rawValue: String(string))!.value
+        }
+        return res 
+        }
+```
+  
+- 시도2 : 앞단어의 값을 확인하여, 현재 값보다 클시 빼주면서 구현
+  - Given `s = MCMXCIV`
+  - 만약 i+1 번째 단어의 값이 i 번째 단어의 값보다 클시, 이는 1 < 5, 100 < 1000 등의 케이스로 나눌수 있음.
+  - i 번째는 각 자리수를 뜻하는데, 만약 i+1 번째 단어의 값이 크다면 현재값을 sum 값에서 빼준다음, i+1 값을 더해주며 처리한다. 
+  - 이방법은 String.index 를 생성할 필요가 없으며, enum 의 case 또한 I, V, X, L, C, D, M 외의 다른 값을 처리해줄 필요가 없어진다. 
+     
+```swift 
+     enum romans2: String {
+         case I
+         case V
+         case X
+         case L
+         case C
+         case D
+         case M
+
+         var value: Int {
+           switch self {
+           case .I:
+             return 1
+           case .V:
+             return 5
+           case .X:
+             return 10
+           case .L:
+             return 50
+           case .C:
+             return 100
+           case .D:
+             return 500
+           case .M:
+             return 1000
+           }
+         }
+       }
+
+     func romanToInt(_ s: String) -> Int {
+         var res = 0
+         let arr = Array(s)
+
+         for i in 0..<arr.count {
+           let val = romans2(rawValue: String(arr[i]))!.value
+           if i+1 < arr.count, val < romans2(rawValue: String(arr[i+1]))!.value {
+             res -= val
+           }else {
+             res += val
+           }
+         }
+         return res 
+      }
+   ``` 
+   
+   > Complexity
+- Time complexity: `O(n)`
+<!-- Add your time complexity here, e.g. $$O(n)$$ -->
+
+- Space complexity: `O(1)`
+
+</details>
