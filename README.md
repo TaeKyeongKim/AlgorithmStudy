@@ -2623,6 +2623,40 @@ class Solution {
  </details>
  
  <details> 
+  <summary> 2.0 Hamming Distance </summary> 
+  
+  > 고민 
+  - bit-wise operator 를 사용할지 말지 고민..
+  
+  > 해결 
+  - bit-wise operator 를 사용하는것과 안하는것에 차이가 없음. (시간복잡도, 공간복잡도 wise) 
+  - 사람이 생각하는 decimal to binary 방법 `n/2` 를 사용하여 문제를 해결. (shift operator 사용가능)
+  
+  > 결과 
+  ```swift 
+  func hammingDistance(_ x: Int, _ y: Int) -> Int {
+        var cnt = 0 
+        var val1 = x 
+        var val2 = y
+        while val1 != 0 || val2 != 0 {
+            if val1 % 2 != val2 % 2 {
+                cnt += 1
+            }
+            val1 = val1 / 2
+            val2 = val2 / 2
+        }
+        return cnt
+    }
+  ```
+  
+  - Time complexity: `O(n)`
+  
+  - Space complexity: `O(1)`
+  
+  
+ </details> 
+ 
+ <details> 
   <summary> 3.0 Reverse Bits </summary> 
 
 > 고민 
