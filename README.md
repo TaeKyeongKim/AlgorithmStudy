@@ -2737,3 +2737,42 @@ func reverseBits(_ n: Int) -> Int {
    - Space complexity: `O(n)`
 
  </details> 
+ 
+ <details>
+  <summary> 5.0 Valid Parentheses </summary>
+
+  > 고민 
+  - 어떻게 짝을 맞춰야하나 고민했는데, 요소 순서대로 하나하나 검사하는 방법은 실패했다.
+  - 힌트를 찾아 봤더니 Stack 을 사용해서 문제를 풀을수 있을것 같았다.
+  
+  > 해결 
+  - 딕셔너리 형태로 닫힌 bracket 을 key, 열린 bracket 을 value 로 할당해논다. 
+  - 주어진 `s` 를 순회하면서 만약 요소가 닫힌 것이라면, 그에 맞는 열린 bracket 을 딕셔너리를 이용해서 찾는다. 
+  - stack 의 맨위에 있는 요소를 불러와 딕셔너리에서 찾은 열린 bracket 과 같은 요소인지 확인한다. (틀릴시 false 반환) 
+  - 만약 딕셔너리에 맞지 않은 요소라면, 열린 요소이기때문에 stack 에 `append` 해준다. 
+  - 마지막으로 stack 이 비어 있지 않다면 짝이 맞지 않는 `s` 이기 때문에 false 를 반환해준다. 
+  
+  > 결과 
+  ```swift 
+  func isValidParentheses(_ s: String) -> Bool {
+  let brackets: [String:String] = [")":"(","]":"[","}":"{" ] //closed: open
+  var stack: [String] = []
+  
+  for char in s {
+    if let matchedBracket = brackets[String(char)], let lastString = stack.popLast() {
+      if lastString != matchedBracket {
+        return false
+      }
+      continue
+    }
+    stack.append(String(char))
+  }
+  return stack.isEmpty
+} 
+  ```
+  - Time complexity: `O(n)`
+  
+  - Space complexity: `O(n)`
+  
+ </details> 
+ 
