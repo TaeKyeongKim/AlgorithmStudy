@@ -2776,3 +2776,22 @@ func reverseBits(_ n: Int) -> Int {
   
  </details> 
  
+ <details> 
+   <summary> 6.0 Missing Number </summary>
+   
+   > 해결
+   - (배열 크기 + 1) = (0 부터 최대수 까지의 크기) 의 합을 주어진 배열의 합과 빼서 나머지 수를 반환 
+   
+   ```swift 
+   func missingNumber(_ nums: [Int]) -> Int {
+        var sum = nums.reduce(0,+)
+        var expectedSum = Array(0...nums.count).reduce(0,+)
+        return expectedSum - sum
+    }
+   ```
+   
+   - Time complexity: `O(n)`
+  
+   - Space complexity: `O(1)`
+ </details>
+ 
