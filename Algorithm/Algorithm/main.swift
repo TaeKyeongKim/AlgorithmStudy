@@ -94,4 +94,10 @@ for items in arr2 {
 
 //print(fizzBuzz(15))
 //print(countPrimes(10))
-print(isPowerOfThree(6))
+//print(isPowerOfThree(6))
+//print(romanToInt("MCMXCIV"))
+//print(hammingWeight(4294967293))
+//00000000000000000000000010000000
+//print(reverseBits(43261596))
+//print(generate(30))
+print(isValidParentheses("]"))
